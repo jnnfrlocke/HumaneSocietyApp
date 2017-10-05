@@ -10,6 +10,8 @@ namespace HumaneSocietyApp
     {
         static void Main(string[] args)
         {
+            HumaneSociety RunHumaneSociety = new HumaneSociety();
+            RunHumaneSociety.Run();
         }
     }
 }
