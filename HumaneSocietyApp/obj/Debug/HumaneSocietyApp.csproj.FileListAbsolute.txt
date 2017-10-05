@@ -1,1 +1,6 @@
 C:\Users\jnnfr\Documents\Visual Studio 2015\Projects\HumaneSociety\HumaneSocietyApp\bin\Debug\HumaneSocietyApp.exe.config
+C:\Users\jnnfr\Documents\Visual Studio 2015\Projects\HumaneSociety\HumaneSocietyApp\bin\Debug\HumaneSocietyApp.exe
+C:\Users\jnnfr\Documents\Visual Studio 2015\Projects\HumaneSociety\HumaneSocietyApp\bin\Debug\HumaneSocietyApp.pdb
+C:\Users\jnnfr\Documents\Visual Studio 2015\Projects\HumaneSociety\HumaneSocietyApp\obj\Debug\HumaneSocietyApp.csprojResolveAssemblyReference.cache
+C:\Users\jnnfr\Documents\Visual Studio 2015\Projects\HumaneSociety\HumaneSocietyApp\obj\Debug\HumaneSocietyApp.exe
+C:\Users\jnnfr\Documents\Visual Studio 2015\Projects\HumaneSociety\HumaneSocietyApp\obj\Debug\HumaneSocietyApp.pdb
