@@ -10,20 +10,22 @@ namespace HumaneSocietyApp
     {
         public void Run()
         {
-
+            EmployeeOrAdopter();
         }
 
         public void EmployeeOrAdopter()
         {
             Console.WriteLine("Are you an employee or a potential adopter? Please type 'employee' or 'adopter'.");
-            string userType = Console.ReadLine();
+            string userType = Console.ReadLine().ToLower();
             if (userType == "employee")
             {
-                EmployeeOptions();
+                Employee newEmployee = new Employee();
+                newEmployee.EmployeeOptions();
             }
             else if (userType == "adopter")
             {
-                AdopterOptions();
+                Adopter newAdopter = new Adopter();
+                newAdopter.AdopterOptions();
             }
             else
             {
@@ -32,14 +34,8 @@ namespace HumaneSocietyApp
             }
         }
 
-        public void EmployeeOptions()
-        {
+        
 
-        }
-
-        public void AdopterOptions()
-        {
-
-        }
+        
     }
 }
