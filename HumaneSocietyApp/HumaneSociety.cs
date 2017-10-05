@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Sql;
+
 
 namespace HumaneSocietyApp
 {
@@ -10,7 +13,8 @@ namespace HumaneSocietyApp
     {
         public void Run()
         {
-            EmployeeOrAdopter();
+            ImportCSV();
+            //EmployeeOrAdopter();
         }
 
         public void EmployeeOrAdopter()
@@ -34,8 +38,32 @@ namespace HumaneSocietyApp
             }
         }
 
-        
+        public void ImportCSV()
+        {
+            string connectionString = "Server=GUMBY;Database=HumaneSociety;Integrated Security=true";
 
-        
+            using (SqlConnection OpeningConnection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand importAnimalCSV = OpeningConnection.CreateCommand())
+                {
+                    importAnimalCSV.CommandText = "bulk insert animal from 'C:/Users/jnnfr/Documents/Visual Studio 2015/Projects/HumaneSociety/HumaneSocietyApp/animals.csv' with (firstrow = 2, fieldterminator = ',', rowterminator = '\n', tablock)";
+
+                    OpeningConnection.Open();
+                    importAnimalCSV.ExecuteNonQuery();
+                    OpeningConnection.Close();
+
+                }
+            }
+             
+            //OpeningConnection.Open();
+
+            //HumaneSocietyDBDataContext db = new HumaneSocietyDBDataContext();
+            //SqlCommand importAnimalCSV = new SqlCommand("bulk insert animal from 'C:/Users/jnnfr/Documents/Visual Studio 2015/Projects/HumaneSociety/HumaneSocietyApp animals.csv' with (firstrow = 2, fieldterminator = ',', rowterminator = '\n', tablock)");
+            //importAnimalCSV.BeginExecuteNonQuery();
+            
+        }
+
+
+
     }
 }

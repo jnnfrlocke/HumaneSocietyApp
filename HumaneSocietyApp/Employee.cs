@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace HumaneSocietyApp
 {
     class Employee
@@ -12,5 +14,13 @@ namespace HumaneSocietyApp
         {
 
         }
+
+        
+
+        public void Search()
+        {
+
+        }
+
     }
 }
