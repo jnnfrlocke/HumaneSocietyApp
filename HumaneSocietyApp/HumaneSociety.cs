@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Sql;
-
+using System.IO;
 
 namespace HumaneSocietyApp
 {
@@ -54,13 +54,12 @@ namespace HumaneSocietyApp
 
                 }
             }
-             
-            //OpeningConnection.Open();
+          }
 
-            //HumaneSocietyDBDataContext db = new HumaneSocietyDBDataContext();
-            //SqlCommand importAnimalCSV = new SqlCommand("bulk insert animal from 'C:/Users/jnnfr/Documents/Visual Studio 2015/Projects/HumaneSociety/HumaneSocietyApp animals.csv' with (firstrow = 2, fieldterminator = ',', rowterminator = '\n', tablock)");
-            //importAnimalCSV.BeginExecuteNonQuery();
-            
+        public void ImportCSVWithLinq ()
+        {
+            string animalFile = "C:/Users/jnnfr/Documents/Visual Studio 2015/Projects/HumaneSociety/HumaneSocietyApp/animals.csv";
+            string[] animalLines = File.ReadAllLines(animalFile);
         }
 
 
