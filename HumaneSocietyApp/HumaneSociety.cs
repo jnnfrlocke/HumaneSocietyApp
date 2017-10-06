@@ -6,15 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Sql;
 using System.IO;
+using System.Data.Linq;
+using Microsoft.VisualBasic;
 
 namespace HumaneSocietyApp
 {
-    class HumaneSociety
+    public class HumaneSociety
     {
         public void Run()
         {
             ImportCSV();
-            //EmployeeOrAdopter();
+            EmployeeOrAdopter();
         }
 
         public void EmployeeOrAdopter()
@@ -38,7 +40,7 @@ namespace HumaneSocietyApp
             }
         }
 
-        public void ImportCSV()
+        public void ImportCSV() //convert this to LINQ
         {
             string connectionString = "Server=GUMBY;Database=HumaneSociety;Integrated Security=true";
 
@@ -54,13 +56,18 @@ namespace HumaneSocietyApp
 
                 }
             }
-          }
-
-        public void ImportCSVWithLinq ()
-        {
-            string animalFile = "C:/Users/jnnfr/Documents/Visual Studio 2015/Projects/HumaneSociety/HumaneSocietyApp/animals.csv";
-            string[] animalLines = File.ReadAllLines(animalFile);
         }
+
+       
+
+
+
+
+
+
+
+
+
 
 
 
