@@ -45,14 +45,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adopter.cs" />
+    <Compile Include="AdopterLifestyle.cs" />
     <Compile Include="AdopterProfile.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="HumaneSociety.cs" />
     <Compile Include="HumaneSociety.designer.cs">
-      <DependentUpon>HumaneSociety.dbml</DependentUpon>
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HumaneSociety.dbml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,12 +67,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="HumaneSociety.dbml">
-      <SubType>Designer</SubType>
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>HumaneSociety.designer.cs</LastGenOutput>
-    </None>
-    <None Include="HumaneSociety.dbml.layout">
-      <DependentUpon>HumaneSociety.dbml</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -83,6 +81,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HumaneSociety.dbml.layout">
+      <DependentUpon>HumaneSociety.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -43,7 +43,7 @@ namespace HumaneSocietyApp
                 age = age 
             };
 
-            HumaneSocietyDataContext addAnimal = new HumaneSocietyDataContext();
+            HumaneSociety02DataContext addAnimal = new HumaneSociety02DataContext();
 
             addAnimal.animals.InsertOnSubmit(animalToInsert);
             addAnimal.SubmitChanges();
@@ -58,8 +58,8 @@ namespace HumaneSocietyApp
 
         public string GetSpecies()
         {
-            Search newSearch = new Search();
-            string searchField = newSearch.SearchMenu();
+            //Search newSearch = new Search();
+            //string searchField = newSearch.SearchMenu();
             Console.WriteLine("Please type the animal's species.");
             string speciesToAdd = Console.ReadLine();
             return speciesToAdd;

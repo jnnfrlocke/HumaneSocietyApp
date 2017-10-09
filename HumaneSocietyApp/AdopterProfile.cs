@@ -8,41 +8,60 @@ namespace HumaneSocietyApp
 {
     class AdopterProfile
     {
-        string name;
-        int streetNumber;
-        string streetName;
-        string city;
-        string state;
-        int zipCode;
-        string phoneNum;
-        string email;
-        string speciesDesired;
-        string lifestyleTraits;
-        string residenceOwnership;
-        string allergies;
-        string previousPets;
-        string currentPets;
-        string veterinarian;
-        string homeVisitPossibility;
+        string getName;
+        string getStreetNumber;
+        string getStreetName;
+        string getCity;
+        string getState;
+        int getZipCode;
+        string getPhoneNum;
+        string getEmail;
+        string getSpeciesDesired;
+        //int lifestyleTraits;
+        string getResidenceOwnership;
+        string getAllergies;
+        string getPreviousPets;
+        string getCurrentPets;
+        string getVeterinarian;
+        string getHomeVisitPossibility;
 
         public void CreateNewProfile()
         {
-            name = GetName();
-            streetNumber = GetStreetNumber();
-            streetName = GetStreetName();
-            city = GetCity();
-            state = GetState();
-            zipCode = GetZipCode();
-            phoneNum = GetPhoneNum();
-            email = GetEmail();
-            speciesDesired = GetSpeciesDesired();
-            lifestyleTraits = GetLifestyleTraits();
-            residenceOwnership = GetResidenceOwnership();
-            allergies = GetAllergies();
-            previousPets = GetPreviousPets();
-            currentPets = GetCurrentPets();
-            veterinarian = GetVeterinarian();// How to do with 2 tables??
-            homeVisitPossibility = GetHomeVisitPossibility();
+            getName = GetName();
+            getStreetNumber = GetStreetNumber();
+            getStreetName = GetStreetName();
+            getCity = GetCity();
+            getState = GetState();
+            getZipCode = GetZipCode();
+            getPhoneNum = GetPhoneNum();
+            getEmail = GetEmail();
+            getSpeciesDesired = GetSpeciesDesired();
+            getResidenceOwnership = GetResidenceOwnership();
+            getAllergies = GetAllergies();
+            //getPreviousPets = GetPreviousPets();
+            //getCurrentPets = GetCurrentPets();
+            getVeterinarian = GetVeterinarian();// How to do with 2 tables??
+            getHomeVisitPossibility = GetHomeVisitPossibility();
+            GetLifestyleTraits();
+
+            adopter adopterToInsert = new adopter
+            {
+                name = getName,
+                street_number = getStreetNumber,
+                street_name = getStreetName,
+                city = getCity,
+                state = getState,
+                zip_code = getZipCode,
+                phone_num = getPhoneNum,
+                email = getEmail,
+                species_desired = getSpeciesDesired,
+                residence_ownership_status = getResidenceOwnership,
+                allergies = getResidenceOwnership,
+                home_visit_possibility = getHomeVisitPossibility
+            };
+
+
+
         }
 
         private string GetName()
@@ -51,10 +70,10 @@ namespace HumaneSocietyApp
             return Console.ReadLine();
         }
 
-        private int GetStreetNumber()
+        private string GetStreetNumber()
         {
             Console.WriteLine("Please enter the numbers in your street address.");
-            return int.Parse(Console.ReadLine());
+            return Console.ReadLine();
         }
 
         private string GetStreetName()
@@ -99,9 +118,10 @@ namespace HumaneSocietyApp
             return Console.ReadLine().ToLower();
         }
 
-        private string GetLifestyleTraits()
+        private void GetLifestyleTraits()
         {
-            return LifestyleInfo();
+            AdopterLifestyle newLifestyle = new AdopterLifestyle();
+            newLifestyle.GetLifestyle();
         }
 
         private string GetResidenceOwnership()
@@ -119,7 +139,7 @@ namespace HumaneSocietyApp
 
         private string GetAllergies()
         {
-            Console.WriteLine("Do you or doesd anyone in your household have allergies to pets?");
+            Console.WriteLine("Do you or does anyone in your household have allergies to pets?");
             string allergyStatus = Console.ReadLine().ToLower();
 
             if (allergyStatus == "yes" || allergyStatus == "y") // TODO:change this to another method
@@ -170,10 +190,11 @@ namespace HumaneSocietyApp
 
 
 
-        private string LifestyleInfo()
-        {
-
-        }
+        //private string LifestyleInfo()
+        //{
+        //    AdopterLifestyle newLifestyle = new AdopterLifestyle();
+        //    newLifestyle.GetLifestyle();
+        //}
 
         private void GetVeterinarianInfo()
         {

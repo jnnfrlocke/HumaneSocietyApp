@@ -18,7 +18,6 @@ namespace HumaneSocietyApp
         string phoneNum;
         string email;
         string speciesDesired;
-        string lifestyleTraits;
         string residenceOwnership;
         string allergies;
         string previousPets;

@@ -57,7 +57,7 @@ namespace HumaneSocietyApp
             Console.WriteLine("Please enter the animal's name");
             string searchName = Console.ReadLine();
 
-            HumaneSocietyDataContext db = new HumaneSocietyDataContext();
+            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
 
             IQueryable<animal> namesQuery =
                 from animal in db.animals
@@ -89,7 +89,7 @@ namespace HumaneSocietyApp
             Console.WriteLine("Please enter a species.");
             string searchSpecies = Console.ReadLine();
 
-            HumaneSocietyDataContext db = new HumaneSocietyDataContext();
+            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
 
             IQueryable<animal> speciesQuery =
                 from animal in db.animals

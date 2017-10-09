@@ -11,6 +11,10 @@ using Microsoft.VisualBasic;
 
 namespace HumaneSocietyApp
 {
+    partial class HumaneSocietyDataContext
+    {
+    }
+
     public class HumaneSociety
     {
         public void Run()
