@@ -33,7 +33,7 @@ namespace HumaneSocietyApp
                     newAnimal.Food();
                     break;
                 case "species":
-                    newAnimal.CheckSpecies();
+                    newAnimal.GetSpecies();
                     break;
                 case "payment":
                     newAnimal.ProcessPayment();

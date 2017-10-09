@@ -40,7 +40,7 @@ namespace HumaneSocietyApp
                 is_adopted = adoptionStatus,
                 adoption_fee = adoptionFee,
                 special_needs = specialNeeds,
-                age = age //TODO age is broken ????
+                age = age 
             };
 
             HumaneSocietyDataContext addAnimal = new HumaneSocietyDataContext();
@@ -56,8 +56,10 @@ namespace HumaneSocietyApp
             return addName;
         }
 
-        private string GetSpecies()
+        public string GetSpecies()
         {
+            Search newSearch = new Search();
+            string searchField = newSearch.SearchMenu();
             Console.WriteLine("Please type the animal's species.");
             string speciesToAdd = Console.ReadLine();
             return speciesToAdd;

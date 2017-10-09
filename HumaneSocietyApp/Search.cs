@@ -88,6 +88,29 @@ namespace HumaneSocietyApp
         {
             Console.WriteLine("Please enter a species.");
             string searchSpecies = Console.ReadLine();
+
+            HumaneSocietyDataContext db = new HumaneSocietyDataContext();
+
+            IQueryable<animal> speciesQuery =
+                from animal in db.animals
+                where animal.species == searchSpecies
+                select animal;// TODO: capture this in an array/list to use in a narrow by search
+
+            try
+            {
+                foreach (var result in speciesQuery)
+                {
+                    Console.WriteLine($"Located {searchSpecies}, ID :{result.animal_id}, {result.name}, aged {result.age}");
+                }
+            }
+            catch (InvalidCastException)
+            {
+                Console.WriteLine("Excpetion in Query...");
+            }
+
+            Console.WriteLine("Would you like to narrow your search further? Type yes or no.");
+            string continueSearching = Console.ReadLine();
+
         }
 
         public void SearchByAdoptionStatus()
