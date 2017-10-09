@@ -5,14 +5,14 @@
       <Column Name="adopter_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="street_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="street_name" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="street_name" Type="System.String" DbType="string" CanBeNull="true" />
       <Column Name="city" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="state" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="zip_code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="zip_code" Type="System.Int32" DbType="int" CanBeNull="true" />
       <Column Name="phone_num" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="species_desired" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="lifestyle_traits" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="lifestyle_traits" Type="System.String" DbType="varchar(100)" CanBeNull="false" />
       <Column Name="residence_ownership_status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="allergies" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="previous_pets" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -20,7 +20,6 @@
       <Column Name="veterinarian" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="home_visit_possibility" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Association Name="adopter_visit" Member="visits" ThisKey="adopter_id" OtherKey="adopter" Type="visit" />
-      <Association Name="adopter_lifestyle" Member="lifestyles" ThisKey="lifestyle_traits" OtherKey="lifestyle_id" Type="lifestyle" />
       <Association Name="veterinarian_adopter" Member="veterinarian1" ThisKey="veterinarian" OtherKey="veterinarian_id" Type="veterinarian" IsForeignKey="true" />
     </Type>
   </Table>
@@ -60,7 +59,6 @@
       <Column Name="time_home" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="veterinarian_cost" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="training" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Association Name="adopter_lifestyle" Member="adopter1" ThisKey="lifestyle_id" OtherKey="lifestyle_traits" Type="adopter" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.previous_pets" Member="previous_pets">

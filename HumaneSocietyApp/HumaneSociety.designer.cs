@@ -166,7 +166,7 @@ namespace HumaneSocietyApp
 		
 		private string _species_desired;
 		
-		private int _lifestyle_traits;
+		private string _lifestyle_traits;
 		
 		private string _residence_ownership_status;
 		
@@ -181,8 +181,6 @@ namespace HumaneSocietyApp
 		private string _home_visit_possibility;
 		
 		private EntitySet<visit> _visits;
-		
-		private EntitySet<lifestyle> _lifestyles;
 		
 		private EntityRef<veterinarian> _veterinarian1;
 		
@@ -210,7 +208,7 @@ namespace HumaneSocietyApp
     partial void OnemailChanged();
     partial void Onspecies_desiredChanging(string value);
     partial void Onspecies_desiredChanged();
-    partial void Onlifestyle_traitsChanging(int value);
+    partial void Onlifestyle_traitsChanging(string value);
     partial void Onlifestyle_traitsChanged();
     partial void Onresidence_ownership_statusChanging(string value);
     partial void Onresidence_ownership_statusChanged();
@@ -229,7 +227,6 @@ namespace HumaneSocietyApp
 		public adopter()
 		{
 			this._visits = new EntitySet<visit>(new Action<visit>(this.attach_visits), new Action<visit>(this.detach_visits));
-			this._lifestyles = new EntitySet<lifestyle>(new Action<lifestyle>(this.attach_lifestyles), new Action<lifestyle>(this.detach_lifestyles));
 			this._veterinarian1 = default(EntityRef<veterinarian>);
 			OnCreated();
 		}
@@ -434,8 +431,8 @@ namespace HumaneSocietyApp
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lifestyle_traits", DbType="Int")]
-		public int lifestyle_traits
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lifestyle_traits", DbType="varchar(100)", CanBeNull=false)]
+		public string lifestyle_traits
 		{
 			get
 			{
@@ -591,19 +588,6 @@ namespace HumaneSocietyApp
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="adopter_lifestyle", Storage="_lifestyles", ThisKey="lifestyle_traits", OtherKey="lifestyle_id")]
-		public EntitySet<lifestyle> lifestyles
-		{
-			get
-			{
-				return this._lifestyles;
-			}
-			set
-			{
-				this._lifestyles.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="veterinarian_adopter", Storage="_veterinarian1", ThisKey="veterinarian", OtherKey="veterinarian_id", IsForeignKey=true)]
 		public veterinarian veterinarian1
 		{
@@ -665,18 +649,6 @@ namespace HumaneSocietyApp
 		}
 		
 		private void detach_visits(visit entity)
-		{
-			this.SendPropertyChanging();
-			entity.adopter1 = null;
-		}
-		
-		private void attach_lifestyles(lifestyle entity)
-		{
-			this.SendPropertyChanging();
-			entity.adopter1 = this;
-		}
-		
-		private void detach_lifestyles(lifestyle entity)
 		{
 			this.SendPropertyChanging();
 			entity.adopter1 = null;
@@ -1238,8 +1210,6 @@ namespace HumaneSocietyApp
 		
 		private string _training;
 		
-		private EntityRef<adopter> _adopter1;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1258,7 +1228,6 @@ namespace HumaneSocietyApp
 		
 		public lifestyle()
 		{
-			this._adopter1 = default(EntityRef<adopter>);
 			OnCreated();
 		}
 		
@@ -1273,10 +1242,6 @@ namespace HumaneSocietyApp
 			{
 				if ((this._lifestyle_id != value))
 				{
-					if (this._adopter1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.Onlifestyle_idChanging(value);
 					this.SendPropertyChanging();
 					this._lifestyle_id = value;
@@ -1362,40 +1327,6 @@ namespace HumaneSocietyApp
 					this._training = value;
 					this.SendPropertyChanged("training");
 					this.OntrainingChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="adopter_lifestyle", Storage="_adopter1", ThisKey="lifestyle_id", OtherKey="lifestyle_traits", IsForeignKey=true)]
-		public adopter adopter1
-		{
-			get
-			{
-				return this._adopter1.Entity;
-			}
-			set
-			{
-				adopter previousValue = this._adopter1.Entity;
-				if (((previousValue != value) 
-							|| (this._adopter1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._adopter1.Entity = null;
-						previousValue.lifestyles.Remove(this);
-					}
-					this._adopter1.Entity = value;
-					if ((value != null))
-					{
-						value.lifestyles.Add(this);
-						this._lifestyle_id = value.lifestyle_traits;
-					}
-					else
-					{
-						this._lifestyle_id = default(int);
-					}
-					this.SendPropertyChanged("adopter1");
 				}
 			}
 		}

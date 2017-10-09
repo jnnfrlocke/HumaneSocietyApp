@@ -38,8 +38,8 @@ namespace HumaneSocietyApp
             getSpeciesDesired = GetSpeciesDesired();
             getResidenceOwnership = GetResidenceOwnership();
             getAllergies = GetAllergies();
-            //getPreviousPets = GetPreviousPets();
-            //getCurrentPets = GetCurrentPets();
+            getPreviousPets = GetPreviousPets(); //create new classes to deal with tables?
+            getCurrentPets = GetCurrentPets(); //create new classes to deal with tables?
             getVeterinarian = GetVeterinarian();// How to do with 2 tables??
             getHomeVisitPossibility = GetHomeVisitPossibility();
             GetLifestyleTraits();
@@ -57,8 +57,13 @@ namespace HumaneSocietyApp
                 species_desired = getSpeciesDesired,
                 residence_ownership_status = getResidenceOwnership,
                 allergies = getResidenceOwnership,
-                home_visit_possibility = getHomeVisitPossibility
+                home_visit_possibility = getHomeVisitPossibility,
             };
+
+            HumaneSociety02DataContext addAdopter = new HumaneSociety02DataContext();
+
+            addAdopter.adopters.InsertOnSubmit(adopterToInsert);
+            addAdopter.SubmitChanges();
 
 
 
@@ -175,8 +180,9 @@ namespace HumaneSocietyApp
         private string GetVeterinarian()
         {
             Console.WriteLine("Do you currently have a veterinarian?");
+            string hasVet = Console.ReadLine();
             GetVeterinarianInfo();
-            return Console.ReadLine();
+            return hasVet;
 
         }
 
@@ -196,7 +202,7 @@ namespace HumaneSocietyApp
         //    newLifestyle.GetLifestyle();
         //}
 
-        private void GetVeterinarianInfo()
+        private void GetVeterinarianInfo()//move to veterinarian class
         {
 
         }

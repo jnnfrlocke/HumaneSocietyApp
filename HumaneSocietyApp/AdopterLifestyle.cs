@@ -8,8 +8,6 @@ namespace HumaneSocietyApp
 {
     public class AdopterLifestyle
     {
-
-
         int timeHome;
         string trained;
         string veterinarianCost;
@@ -32,7 +30,6 @@ namespace HumaneSocietyApp
 
             addLifestyle.lifestyles.InsertOnSubmit(newLifestyle);
             addLifestyle.SubmitChanges();
-             
         }
 
         public int GetTimeHome()
