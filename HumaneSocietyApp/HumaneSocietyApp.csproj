@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adopter.cs" />
+    <Compile Include="AdopterProfile.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="HumaneSociety.cs" />

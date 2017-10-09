@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="HumaneSociety">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.625" name="HumaneSociety">
   <DataContextMoniker Name="/HumaneSocietyDataContext" />
   <nestedChildShapes>
     <classShape Id="a2b8a236-ccb0-414f-83d0-bd332b50b822" absoluteBounds="3.75, 0.5, 2, 2.7324039713541666">
@@ -38,6 +38,19 @@
       <nodes>
         <classShapeMoniker Id="880abad3-e5a1-4eda-82ac-a484aa0ee051" />
         <classShapeMoniker Id="cdc3220c-25d6-458c-8268-22b4b3ee9545" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="db9cc9a9-d567-4571-b85f-5fd79783cfd9" absoluteBounds="3.625, 6.625, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/HumaneSocietyDataContext/lifestyle" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ce3106fe-4464-4848-aad3-46290eae262b" absoluteBounds="3.64, 7.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 4.57851399739583); (3 : 4.95351399739583); (3 : 7.51044840494792); (3.625 : 7.51044840494792)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HumaneSocietyDataContext/adopter/adopter_lifestyle" />
+      <nodes>
+        <classShapeMoniker Id="880abad3-e5a1-4eda-82ac-a484aa0ee051" />
+        <classShapeMoniker Id="db9cc9a9-d567-4571-b85f-5fd79783cfd9" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

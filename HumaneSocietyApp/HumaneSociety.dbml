@@ -34,6 +34,7 @@
       <Column Name="veterinarian" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="home_visit_possibility" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Association Name="adopter_visit" Member="visits" ThisKey="adopter_id" OtherKey="adopter" Type="visit" />
+      <Association Name="adopter_lifestyle" Member="lifestyles" ThisKey="adopter_id" OtherKey="adopter" Type="lifestyle" />
       <Association Name="veterinarian_adopter" Member="veterinarian1" ThisKey="veterinarian" OtherKey="veterinarian_id" Type="veterinarian" IsForeignKey="true" />
     </Type>
   </Table>
@@ -58,6 +59,16 @@
       <Column Name="adopter" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="species_desired" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="adopter_visit" Member="adopter1" ThisKey="adopter" OtherKey="adopter_id" Type="adopter" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.lifestyle" Member="lifestyles">
+    <Type Name="lifestyle">
+      <Column Name="lifestyle_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="adopter" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time_home" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time_to_commit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="veterinarian_cost" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="adopter_lifestyle" Member="adopter1" ThisKey="adopter" OtherKey="adopter_id" Type="adopter" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

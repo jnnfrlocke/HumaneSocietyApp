@@ -49,23 +49,9 @@ namespace HumaneSocietyApp
 
         public void CreateProfile()
         {
-            //name = GetName();
-            //streetNumber = GetStreetNumber();
-            //streetName = GetStreetName();
-            //city = GetCity();
-            //state = GetState();
-            //zipCode = GetZipCode();
-            //phoneNum = GetPhoneNum();
-            //email = GetEmail();
-            //speciesDesired = GetSpeciesDesired();
-            //GetLifestyleTraits();
-            //GetResidenceOwnership();
-            //GetAllergies();
-            //GetPreviousPets();
-            //GetCurrentPets();
-            //GetVeterinarian();// ow to do with 2 tables??
-            //GetHomeVisitPossibility();
-
+            AdopterProfile newProfile = new AdopterProfile();
+            newProfile.CreateNewProfile();
         }
+
     }
 }

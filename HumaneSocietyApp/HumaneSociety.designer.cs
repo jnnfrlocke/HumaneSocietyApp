@@ -42,6 +42,9 @@ namespace HumaneSocietyApp
     partial void Insertvisit(visit instance);
     partial void Updatevisit(visit instance);
     partial void Deletevisit(visit instance);
+    partial void Insertlifestyle(lifestyle instance);
+    partial void Updatelifestyle(lifestyle instance);
+    partial void Deletelifestyle(lifestyle instance);
     #endregion
 		
 		public HumaneSocietyDataContext() : 
@@ -103,6 +106,14 @@ namespace HumaneSocietyApp
 			get
 			{
 				return this.GetTable<visit>();
+			}
+		}
+		
+		public System.Data.Linq.Table<lifestyle> lifestyles
+		{
+			get
+			{
+				return this.GetTable<lifestyle>();
 			}
 		}
 	}
@@ -427,6 +438,8 @@ namespace HumaneSocietyApp
 		
 		private EntitySet<visit> _visits;
 		
+		private EntitySet<lifestyle> _lifestyles;
+		
 		private EntityRef<veterinarian> _veterinarian1;
 		
     #region Extensibility Method Definitions
@@ -472,6 +485,7 @@ namespace HumaneSocietyApp
 		public adopter()
 		{
 			this._visits = new EntitySet<visit>(new Action<visit>(this.attach_visits), new Action<visit>(this.detach_visits));
+			this._lifestyles = new EntitySet<lifestyle>(new Action<lifestyle>(this.attach_lifestyles), new Action<lifestyle>(this.detach_lifestyles));
 			this._veterinarian1 = default(EntityRef<veterinarian>);
 			OnCreated();
 		}
@@ -833,6 +847,19 @@ namespace HumaneSocietyApp
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="adopter_lifestyle", Storage="_lifestyles", ThisKey="adopter_id", OtherKey="adopter")]
+		public EntitySet<lifestyle> lifestyles
+		{
+			get
+			{
+				return this._lifestyles;
+			}
+			set
+			{
+				this._lifestyles.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="veterinarian_adopter", Storage="_veterinarian1", ThisKey="veterinarian", OtherKey="veterinarian_id", IsForeignKey=true)]
 		public veterinarian veterinarian1
 		{
@@ -894,6 +921,18 @@ namespace HumaneSocietyApp
 		}
 		
 		private void detach_visits(visit entity)
+		{
+			this.SendPropertyChanging();
+			entity.adopter1 = null;
+		}
+		
+		private void attach_lifestyles(lifestyle entity)
+		{
+			this.SendPropertyChanging();
+			entity.adopter1 = this;
+		}
+		
+		private void detach_lifestyles(lifestyle entity)
 		{
 			this.SendPropertyChanging();
 			entity.adopter1 = null;
@@ -1325,6 +1364,205 @@ namespace HumaneSocietyApp
 					if ((value != null))
 					{
 						value.visits.Add(this);
+						this._adopter = value.adopter_id;
+					}
+					else
+					{
+						this._adopter = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("adopter1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.lifestyle")]
+	public partial class lifestyle : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _lifestyle_id;
+		
+		private System.Nullable<int> _adopter;
+		
+		private System.Nullable<int> _time_home;
+		
+		private System.Nullable<int> _time_to_commit;
+		
+		private string _veterinarian_cost;
+		
+		private EntityRef<adopter> _adopter1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onlifestyle_idChanging(int value);
+    partial void Onlifestyle_idChanged();
+    partial void OnadopterChanging(System.Nullable<int> value);
+    partial void OnadopterChanged();
+    partial void Ontime_homeChanging(System.Nullable<int> value);
+    partial void Ontime_homeChanged();
+    partial void Ontime_to_commitChanging(System.Nullable<int> value);
+    partial void Ontime_to_commitChanged();
+    partial void Onveterinarian_costChanging(string value);
+    partial void Onveterinarian_costChanged();
+    #endregion
+		
+		public lifestyle()
+		{
+			this._adopter1 = default(EntityRef<adopter>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lifestyle_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int lifestyle_id
+		{
+			get
+			{
+				return this._lifestyle_id;
+			}
+			set
+			{
+				if ((this._lifestyle_id != value))
+				{
+					this.Onlifestyle_idChanging(value);
+					this.SendPropertyChanging();
+					this._lifestyle_id = value;
+					this.SendPropertyChanged("lifestyle_id");
+					this.Onlifestyle_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_adopter", DbType="Int")]
+		public System.Nullable<int> adopter
+		{
+			get
+			{
+				return this._adopter;
+			}
+			set
+			{
+				if ((this._adopter != value))
+				{
+					if (this._adopter1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnadopterChanging(value);
+					this.SendPropertyChanging();
+					this._adopter = value;
+					this.SendPropertyChanged("adopter");
+					this.OnadopterChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_home", DbType="Int")]
+		public System.Nullable<int> time_home
+		{
+			get
+			{
+				return this._time_home;
+			}
+			set
+			{
+				if ((this._time_home != value))
+				{
+					this.Ontime_homeChanging(value);
+					this.SendPropertyChanging();
+					this._time_home = value;
+					this.SendPropertyChanged("time_home");
+					this.Ontime_homeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_to_commit", DbType="Int")]
+		public System.Nullable<int> time_to_commit
+		{
+			get
+			{
+				return this._time_to_commit;
+			}
+			set
+			{
+				if ((this._time_to_commit != value))
+				{
+					this.Ontime_to_commitChanging(value);
+					this.SendPropertyChanging();
+					this._time_to_commit = value;
+					this.SendPropertyChanged("time_to_commit");
+					this.Ontime_to_commitChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_veterinarian_cost", DbType="VarChar(10)")]
+		public string veterinarian_cost
+		{
+			get
+			{
+				return this._veterinarian_cost;
+			}
+			set
+			{
+				if ((this._veterinarian_cost != value))
+				{
+					this.Onveterinarian_costChanging(value);
+					this.SendPropertyChanging();
+					this._veterinarian_cost = value;
+					this.SendPropertyChanged("veterinarian_cost");
+					this.Onveterinarian_costChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="adopter_lifestyle", Storage="_adopter1", ThisKey="adopter", OtherKey="adopter_id", IsForeignKey=true)]
+		public adopter adopter1
+		{
+			get
+			{
+				return this._adopter1.Entity;
+			}
+			set
+			{
+				adopter previousValue = this._adopter1.Entity;
+				if (((previousValue != value) 
+							|| (this._adopter1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._adopter1.Entity = null;
+						previousValue.lifestyles.Remove(this);
+					}
+					this._adopter1.Entity = value;
+					if ((value != null))
+					{
+						value.lifestyles.Add(this);
 						this._adopter = value.adopter_id;
 					}
 					else
