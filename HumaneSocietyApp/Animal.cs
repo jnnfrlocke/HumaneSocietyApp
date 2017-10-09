@@ -16,7 +16,7 @@ namespace HumaneSocietyApp
         string adoptionStatus;
         int adoptionFee;
         string specialNeeds;
-        int age;
+        string age;
 
         public void Add()
         {
@@ -40,10 +40,10 @@ namespace HumaneSocietyApp
                 is_adopted = adoptionStatus,
                 adoption_fee = adoptionFee,
                 special_needs = specialNeeds,
-                age = age,
+                age = age //TODO age is broken ????
             };
 
-            HumaneSocietyDBDataContext addAnimal = new HumaneSocietyDBDataContext();
+            HumaneSocietyDataContext addAnimal = new HumaneSocietyDataContext();
 
             addAnimal.animals.InsertOnSubmit(animalToInsert);
             addAnimal.SubmitChanges();
@@ -106,20 +106,25 @@ namespace HumaneSocietyApp
             return specialNeeds;
         }
 
-        private int GetAge()
+        private string GetAge()
         {
             Console.WriteLine("How old is this animal?");
-            int age = int.Parse(Console.ReadLine());
+            string age = Console.ReadLine();
             return age;
         }
-
-
-
-
+        
 
         public void ChangeStatus()
         {
+            Search newSearch = new Search();
+            string searchField = newSearch.SearchMenu();
 
+
+
+            //GetAdoptionStatus();
+
+            var animalStatus = new animal();
+            //var statusChangeAnimal = animalStatus.Where(searchField.is_adopted == "no" ) TODO change adopted status 
         }
 
         public void Location()
@@ -146,5 +151,21 @@ namespace HumaneSocietyApp
         {
 
         }
+
+
+        //public void ShowAnimal() TODO: string concatenation
+        //{
+        //    Console.WriteLine("Name: " + animal.name);
+        //    Console.WriteLine("Species: " + animal.species);
+        //    Console.WriteLine("Vaccinated: " + animal.is_vaccinated);
+        //    Console.WriteLine("Amount of Food: " + animal.amount_of_food);
+        //    Console.WriteLine("Location: " + animal.room);
+        //    Console.WriteLine("Adopted: " + animal.is_adopted);
+        //    Console.WriteLine("Adoption Fee: " + animal.adoption_fee);
+        //    Console.WriteLine("Special Needs: " + animal.special_needs);
+        //    Console.WriteLine("Age: " + animal.age);
+        //}
+
+
     }
 }

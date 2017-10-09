@@ -48,10 +48,10 @@
     <Compile Include="Animal.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="HumaneSociety.cs" />
-    <Compile Include="HumaneSocietyDB.designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Include="HumaneSociety.designer.cs">
+      <DependentUpon>HumaneSociety.dbml</DependentUpon>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HumaneSocietyDB.dbml</DependentUpon>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,13 +60,17 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Search.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="HumaneSocietyDB.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>HumaneSocietyDB.designer.cs</LastGenOutput>
+    <None Include="HumaneSociety.dbml">
       <SubType>Designer</SubType>
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>HumaneSociety.designer.cs</LastGenOutput>
+    </None>
+    <None Include="HumaneSociety.dbml.layout">
+      <DependentUpon>HumaneSociety.dbml</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -77,9 +81,7 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="HumaneSocietyDB.dbml.layout">
-      <DependentUpon>HumaneSocietyDB.dbml</DependentUpon>
-    </None>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

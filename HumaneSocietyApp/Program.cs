@@ -13,5 +13,23 @@ namespace HumaneSocietyApp
             HumaneSociety RunHumaneSociety = new HumaneSociety();
             RunHumaneSociety.Run();
         }
+
+        //string name;
+        //int streetNumber;
+        //string streetName;
+        //string city;
+        //string state;
+        //int zipCode;
+        //string phoneNum;
+        //string email;
+        //string speciesDesired;
+        //string lifestyleTraits;
+        //string residenceOwnership;
+        //string allergies;
+        //string previousPets;
+        //string currentPets;
+        //string veterinarian;
+        //string homeVisitPossibility;
+
     }
 }
