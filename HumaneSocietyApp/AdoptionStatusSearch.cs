@@ -36,13 +36,15 @@ namespace HumaneSocietyApp
             IQueryable<animal> adoptionStatusQuery =
                 from animal in db.animals
                 where animal.is_adopted == adopted
-                select animal;// TODO: capture this in an array/list to use in a narrow by search
+                select animal;
+
+            Array adoptionStatusArray = adoptionStatusQuery.ToArray();
 
             try
             {
                 foreach (var result in adoptionStatusQuery)
                 {
-                    Console.WriteLine($"Located {searchAdoptionStatus} animals, ID :{result.animal_id}, {result.name}, aged {result.age}");
+                    Console.WriteLine($"Located {searchAdoptionStatus} animals, ID: {result.animal_id}, {result.species}, {result.name}, aged {result.age}");
                 }
             }
             catch (InvalidCastException)
@@ -50,6 +52,8 @@ namespace HumaneSocietyApp
                 Console.WriteLine("Excpetion in Query...");
             }
 
+            NarrowSearch narrowSearchDown = new NarrowSearch();
+            narrowSearchDown.narrowOption(adoptionStatusArray);
         }
     }
 }
