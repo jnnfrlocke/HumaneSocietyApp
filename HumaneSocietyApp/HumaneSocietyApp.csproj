@@ -47,7 +47,11 @@
     <Compile Include="Adopter.cs" />
     <Compile Include="AdopterLifestyle.cs" />
     <Compile Include="AdopterProfile.cs" />
+    <Compile Include="AdoptionFeeSearch.cs" />
+    <Compile Include="AdoptionStatusSearch.cs" />
+    <Compile Include="AgeSearch.cs" />
     <Compile Include="Animal.cs" />
+    <Compile Include="ContinueSearch.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="HumaneSociety.cs" />
     <Compile Include="HumaneSociety.designer.cs">
@@ -55,6 +59,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HumaneSociety.dbml</DependentUpon>
     </Compile>
+    <Compile Include="LocationSearch.cs" />
+    <Compile Include="NameSearch.cs" />
+    <Compile Include="NarrowSearch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -63,6 +70,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Search.cs" />
+    <Compile Include="SpecialNeedsSearch.cs" />
+    <Compile Include="SpeciesSearch.cs" />
+    <Compile Include="VaccinationStatusSearch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
