@@ -58,7 +58,12 @@ namespace HumaneSocietyApp
                     importAnimalCSV.ExecuteNonQuery();
                     OpeningConnection.Close();
 
-                  }
+                }
+
+                //HumaneSociety02DataContext importAnimalCSV = new HumaneSociety02DataContext();
+
+                //importAnimalCSV.animals.InsertAllOnSubmit (string "bulk insert animal from 'C:/Users/jnnfr/Documents/Visual Studio 2015/Projects/HumaneSociety/HumaneSocietyApp/animals.csv' with (firstrow = 2, fieldterminator = ',', rowterminator = '\n', tablock)", );
+
             }
 
              //var importCSV = new

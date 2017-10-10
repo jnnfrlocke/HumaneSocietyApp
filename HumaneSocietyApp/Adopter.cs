@@ -20,7 +20,8 @@ namespace HumaneSocietyApp
             }
             else if (adopterSelection == "new profile")
             {
-                CreateProfile();
+                AdopterProfile newProfile = new AdopterProfile();
+                newProfile.CreateNewProfile();
             }
             else
             {
@@ -28,12 +29,5 @@ namespace HumaneSocietyApp
                 AdopterOptions();
             }
         }
-
-        public void CreateProfile()
-        {
-            AdopterProfile newProfile = new AdopterProfile();
-            newProfile.CreateNewProfile();
-        }
-
     }
 }

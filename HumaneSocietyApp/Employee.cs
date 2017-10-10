@@ -13,29 +13,29 @@ namespace HumaneSocietyApp
         public void EmployeeOptions()
         {
             Animal newAnimal = new Animal();
-            Console.WriteLine("Please type the task you need to access:\nTo add an animal, type add.\nTo change an animal's adoption status, type status.\nTo see which room an animal is located in, type location.\nTo find out if an animal has had its vaccinations, type vaccinations.\nTo track the amount of food an animal needs, type food.\nTo view or change an animals category, type species.\nTo process an adoption fee payment, type payment.\nTo go back to the beginning, type restart.");
+            Console.WriteLine("Please type the task you need to access:\nTo add an animal, type 1.\nTo see which room an animal is located in, type 2.\nTo find out if an animal has had its vaccinations, type 3.\nTo view the amount of food an animal needs, type 4.\nTo view or change an animal's species, type 5.\nTo change an animal's adoption status, type 6.\nTo process an adoption fee payment, type 7.\nTo start over, type restart.");
             string task = Console.ReadLine();
             switch (task)
             {
-                case "add":
+                case "1":
                     newAnimal.Add();
                     break;
-                case "status":
-                    newAnimal.ChangeStatus();
-                    break;
-                case "location":
+                case "2":
                     newAnimal.Location();
                     break;
-                case "vaccinations":
+                case "3":
                     newAnimal.CheckVaccinationStatus();
                     break;
-                case "food":
+                case "4":
                     newAnimal.Food();
                     break;
-                case "species":
-                    newAnimal.GetSpecies();
+                case "5":
+                    newAnimal.CheckSpecies();
                     break;
-                case "payment":
+                case "6":
+                    newAnimal.ChangeStatus(task);
+                    break;
+                case "7":
                     newAnimal.ProcessPayment();
                     break;
                 case "restart":
@@ -46,17 +46,7 @@ namespace HumaneSocietyApp
                     Console.WriteLine("You did not type a valid entry.");
                     EmployeeOptions();
                     break;
-
             } 
         }
-
-        
-
-        public void Search()
-        {
-
-        }
-
-        
     }
 }

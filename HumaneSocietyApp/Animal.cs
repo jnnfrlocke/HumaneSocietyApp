@@ -58,8 +58,6 @@ namespace HumaneSocietyApp
 
         public string GetSpecies()
         {
-            //Search newSearch = new Search();
-            //string searchField = newSearch.SearchMenu();
             Console.WriteLine("Please type the animal's species.");
             string speciesToAdd = Console.ReadLine();
             return speciesToAdd;
@@ -81,7 +79,6 @@ namespace HumaneSocietyApp
 
         private string GetLocation()
         {
-
             Console.WriteLine("What room is this animal in?");
             string locationToAdd = Console.ReadLine();
             return locationToAdd;
@@ -115,8 +112,9 @@ namespace HumaneSocietyApp
             return age;
         }
         
+        // Add options end here
 
-        public void ChangeStatus()
+        public void ChangeStatus(string task)
         {
             Search newSearch = new Search();
             string searchField = newSearch.SearchMenu();

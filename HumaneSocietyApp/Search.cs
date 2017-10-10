@@ -14,34 +14,42 @@ namespace HumaneSocietyApp
 
         public string SearchMenu()
         {
-            Console.WriteLine("Which trait would you like to search by?\nPlease enter one of the following:\nID\nName\nSpecies\nAdoption Status\nSpecial Needs\nAge\nAdoptionFee\nLocation\nVaccination Status");
+            Console.WriteLine("Which trait would you like to search by?\nPlease enter one of the following:\nName: type 1\nSpecies: type 2\nAdoption Status: type 3\nSpecial Needs: type 4\nAge: type 5\nAdoptionFee: type 6\nLocation: type 7\nVaccination Status: type 8");
             string searchType = Console.ReadLine().ToLower();
 
             switch (searchType)
             {
-                case "name":
-                    SearchByName();
+                case "1":
+                    NameSearch newNameSearch = new NameSearch();
+                    newNameSearch.SearchByName();
                     break;
-                case "species":
-                    SearchBySpecies();
+                case "2":
+                    SpeciesSearch newSpeciesSearch = new SpeciesSearch();
+                    newSpeciesSearch.SearchBySpecies();
                     break;
-                case "adoption status":
-                    SearchByAdoptionStatus();
+                case "3":
+                    AdoptionStatusSearch newAdoptionStatusSearch = new AdoptionStatusSearch();
+                    newAdoptionStatusSearch.SearchByAdoptionStatus();
                     break;
-                case "special needs":
-                    SearchBySpecialNeeds();
+                case "4":
+                    SpecialNeedsSearch newSpecialNeedsSearch = new SpecialNeedsSearch();
+                    newSpecialNeedsSearch.SearchBySpecialNeeds();
                     break;
-                case "age":
-                    SearchByAge();
+                case "5":
+                    AgeSearch newAgeSearch = new AgeSearch();
+                    newAgeSearch.SearchByAge();
                     break;
-                case "adoption fee":
-                    SearchByAdoptionFee();
+                case "6":
+                    AdoptionFeeSearch newAdoptionFeeSearch = new AdoptionFeeSearch();
+                    newAdoptionFeeSearch.SearchByAdoptionFee();
                     break;
-                case "location":
-                    SearchByLocation();
+                case "7":
+                    LocationSearch newLocationSearch = new LocationSearch();
+                    newLocationSearch.SearchByLocation();
                     break;
-                case "vaccination status":
-                    SearchByVaccinationStatus();
+                case "8":
+                    VaccinationStatusSearch newVaccionationStatusSearch = new VaccinationStatusSearch();
+                    newVaccionationStatusSearch.SearchByVaccinationStatus();
                     break;
                 default:
                     Console.WriteLine("Please type a valid entry.");
@@ -49,139 +57,6 @@ namespace HumaneSocietyApp
                     break;
             }
             return searchType;
-
-        }
-
-        public void SearchByName()
-        {
-            Console.WriteLine("Please enter the animal's name");
-            string searchName = Console.ReadLine();
-
-            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
-
-            IQueryable<animal> namesQuery =
-                from animal in db.animals
-                where animal.name == searchName
-                select animal;
-            
-            try
-            {
-                foreach (var result in namesQuery)
-                {
-                    Console.WriteLine($"Located {searchName}, ID :{result.animal_id}, {result.species}, aged {result.age}");
-                }
-            }
-            catch (InvalidCastException)
-            {
-                Console.WriteLine("Excpetion in Query...");
-            }
-            
-            Console.WriteLine("Would you like to narrow your search further? Type yes or no.");
-            string continueSearching = Console.ReadLine();
-
-            //return searchName;
-        }
-
-
-
-        public void SearchBySpecies()
-        {
-            Console.WriteLine("Please enter a species.");
-            string searchSpecies = Console.ReadLine();
-
-            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
-
-            IQueryable<animal> speciesQuery =
-                from animal in db.animals
-                where animal.species == searchSpecies
-                select animal;// TODO: capture this in an array/list to use in a narrow by search
-
-            try
-            {
-                foreach (var result in speciesQuery)
-                {
-                    Console.WriteLine($"Located {searchSpecies}, ID :{result.animal_id}, {result.name}, aged {result.age}");
-                }
-            }
-            catch (InvalidCastException)
-            {
-                Console.WriteLine("Excpetion in Query...");
-            }
-
-            Console.WriteLine("Would you like to narrow your search further? Type yes or no.");
-            string continueSearching = Console.ReadLine();
-
-        }
-
-        public void SearchByAdoptionStatus()
-        {
-            Console.WriteLine("Are you looking for adopted animals or animals waiting for adoption? Please enter adopted or waiting.");
-            string searchAdoptionStatus = Console.ReadLine();
-
-            string adopted;
-
-
-            if (searchAdoptionStatus == "adopted")
-            {
-                adopted = "yes";
-            }
-            else if (searchAdoptionStatus == "waiting")
-            {
-                adopted = "no";
-            }
-            else
-            {
-                Console.WriteLine("You entered an invalid option");
-                SearchByAdoptionStatus();
-            }
-
-
-            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
-
-            IQueryable<animal> adoptionStatusQuery =
-                from animal in db.animals
-                where animal.is_adopted == searchAdoptionStatus
-                select animal;// TODO: capture this in an array/list to use in a narrow by search
-
-            try
-            {
-                foreach (var result in adoptionStatusQuery)
-                {
-                    Console.WriteLine($"Located {searchAdoptionStatus} animals, ID :{result.animal_id}, {result.name}, aged {result.age}");
-                }
-            }
-            catch (InvalidCastException)
-            {
-                Console.WriteLine("Excpetion in Query...");
-            }
-
-        }
-
-        public void SearchBySpecialNeeds()
-        {
-            Console.WriteLine("Are you looking for animals with special needs?");
-            string searchSpecialNeeds = Console.ReadLine();
-        }
-
-        public void SearchByAge()
-        {
-            Console.WriteLine("What age would you like to search for?");
-            string searchAge = Console.ReadLine();
-        }
-
-        public void SearchByAdoptionFee()
-        {
-
-        }
-
-        public void SearchByLocation()
-        {
-
-        }
-
-        public void SearchByVaccinationStatus()
-        {
-
         }
     }
 
