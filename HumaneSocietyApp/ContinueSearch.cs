@@ -8,10 +8,9 @@ namespace HumaneSocietyApp
 {
     class ContinueSearch
     {
-        
              public string ContinueSearchMenu(Array arrayToNarrow)
         {
-            Console.WriteLine("Which trait would you like to search by?\nPlease enter one of the following:\nName: type 1\nSpecies: type 2\nAdoption Status: type 3\nSpecial Needs: type 4\nAge: type 5\nAdoptionFee: type 6\nLocation: type 7\nVaccination Status: type 8");
+            Console.WriteLine("Which trait would you like to search by?\nPlease enter one of the following:\nName: type 1\nSpecies: type 2\nAdoption Status: type 3\nSpecial Needs: type 4\nAge: type 5\nAdoptionFee: type 6\nVaccination Status: type 7");
             string searchType = Console.ReadLine().ToLower();
 
             switch (searchType)
@@ -41,16 +40,31 @@ namespace HumaneSocietyApp
                     newAdoptionFeeSearch.SearchByAdoptionFee();
                     break;
                 case "7":
-                    LocationSearch newLocationSearch = new LocationSearch();
-                    newLocationSearch.SearchByLocation();
-                    break;
-                case "8":
                     VaccinationStatusSearch newVaccionationStatusSearch = new VaccinationStatusSearch();
                     newVaccionationStatusSearch.SearchByVaccinationStatus();
                     break;
                 default:
-                    Console.WriteLine("Please type a valid entry.");
-                    ContinueSearchMenu(arrayToNarrow);
+                    Console.WriteLine("You did not enter a valid option. Would you like to continue, exit the application, or restart? Type 1 to continue, 2 to exit, or 3 to restart.");
+                    string endContinueSearch = Console.ReadLine();
+
+                    if (endContinueSearch == "1")
+                    {
+                        ContinueSearchMenu(arrayToNarrow);
+                    }
+                    else if (endContinueSearch == "2")
+                    {
+                        Environment.Exit(0);
+                    }
+                    else if (endContinueSearch == "3")
+                    {
+                        HumaneSociety startOver = new HumaneSociety();
+                        startOver.Run();
+                    }
+                    else
+                    {
+                        Console.WriteLine("You did not enter a valid option.");
+                        ContinueSearchMenu(arrayToNarrow);
+                    }                    
                     break;
             }
             return searchType;

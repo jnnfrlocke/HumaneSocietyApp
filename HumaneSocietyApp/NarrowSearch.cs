@@ -40,10 +40,31 @@ namespace HumaneSocietyApp
                             //process payment method;
                             break;
                         default:
-                            Console.WriteLine("You entered an invalid option.");
-                            narrowOption(arrayToNarrow);
+                            Console.WriteLine("You entered an invalid option. Would you like to continue, exit the application or start over? Type 1 to continue, 2 to exit, or 3 to start over.");
+                            string endNarrowSearch = Console.ReadLine();
+
+                            if (endNarrowSearch == "1")
+                            {
+                                narrowOption(arrayToNarrow); ;
+                            }
+                            else if (endNarrowSearch == "2")
+                            {
+                                Environment.Exit(0);
+                            }
+                            else if (endNarrowSearch == "3")
+                            {
+                                HumaneSociety startOver = new HumaneSociety();
+                                startOver.Run();
+                            }
+                            else
+                            {
+                                Console.WriteLine("You did not enter a valid option.");
+                                narrowOption(arrayToNarrow);
+                            }
                             break;
                     }
+                        
+                   
                 }
 
                 else if (endOrRestart == "2")
@@ -62,6 +83,7 @@ namespace HumaneSocietyApp
                     narrowOption(arrayToNarrow);
                 }
             }
+
         }
     }
 }

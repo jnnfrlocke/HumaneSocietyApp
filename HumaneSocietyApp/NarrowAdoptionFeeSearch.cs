@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace HumaneSocietyApp
 {
-    class AdoptionFeeSearch
+    class NarrowAdoptionFeeSearch
     {
-        public void SearchByAdoptionFee()
+        public void SearchByAdoptionFee()// pass in array created by previous search
         {
             Console.WriteLine("What adoption fee are you looking for?");
             float searchAdoptionFee = float.Parse(Console.ReadLine());

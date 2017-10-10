@@ -25,8 +25,27 @@ namespace HumaneSocietyApp
             }
             else
             {
-                Console.WriteLine("You did not enter a valid option.");
-                AdopterOptions();
+                Console.WriteLine("You did not enter a valid option. Would you like to continue, exit the application, or restart? Type 1 to continue, 2 to exit, or 3 to restart.");
+                string adopterRestartSelection = Console.ReadLine();
+
+                if (adopterRestartSelection == "1")
+                {
+                    AdopterOptions();
+                }
+                else if (adopterRestartSelection == "2")
+                {
+                    Environment.Exit(0);
+                }
+                else if (adopterRestartSelection == "3")
+                {
+                    HumaneSociety startOver = new HumaneSociety();
+                    startOver.Run();
+                }
+                else
+                {
+                    Console.WriteLine("You did not enter a valid option.");
+                    AdopterOptions();
+                }
             }
         }
     }

@@ -59,7 +59,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HumaneSociety.dbml</DependentUpon>
     </Compile>
-    <Compile Include="LocationSearch.cs" />
     <Compile Include="NameSearch.cs" />
     <Compile Include="NarrowSearch.cs" />
     <Compile Include="Program.cs" />

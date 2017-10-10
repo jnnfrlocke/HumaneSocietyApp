@@ -34,6 +34,8 @@ namespace HumaneSocietyApp
                 Console.WriteLine("Excpetion in Query...");
             }
 
+            //need something for if no results
+
             NarrowSearch narrowSearchDown = new NarrowSearch();
             narrowSearchDown.narrowOption(namesArray);
         }

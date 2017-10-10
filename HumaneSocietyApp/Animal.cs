@@ -111,8 +111,13 @@ namespace HumaneSocietyApp
             string age = Console.ReadLine();
             return age;
         }
-        
+
         // Add options end here
+
+        public void ChangeSpecies()
+        {
+
+        }
 
         public void ChangeStatus(string task)
         {
@@ -127,32 +132,30 @@ namespace HumaneSocietyApp
             //var statusChangeAnimal = animalStatus.Where(searchField.is_adopted == "no" ) TODO change adopted status 
         }
 
-        public void Location()
-        {
-
-        }
-
-        public void CheckVaccinationStatus()
-        {
-
-        }
-
-        public void Food()
-        {
-
-        }
-
-        public void CheckSpecies()
-        {
-
-        }
-
         public void ProcessPayment()
         {
 
         }
 
 
+
+
+
+        //public void Location()
+        //{
+
+        //}
+
+        //public void CheckVaccinationStatus()
+        //{
+
+        //}
+
+        //public void Food()
+        //{
+
+        //}
+        
         //public void ShowAnimal() TODO: string concatenation
         //{
         //    Console.WriteLine("Name: " + animal.name);

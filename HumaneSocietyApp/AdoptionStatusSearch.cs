@@ -52,6 +52,8 @@ namespace HumaneSocietyApp
                 Console.WriteLine("Excpetion in Query...");
             }
 
+            // something for if no results
+
             NarrowSearch narrowSearchDown = new NarrowSearch();
             narrowSearchDown.narrowOption(adoptionStatusArray);
         }

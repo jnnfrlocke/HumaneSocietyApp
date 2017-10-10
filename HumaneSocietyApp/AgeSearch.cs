@@ -12,6 +12,32 @@ namespace HumaneSocietyApp
         {
             Console.WriteLine("What age would you like to search for?");
             string searchAge = Console.ReadLine();
+
+            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+
+            IQueryable<animal> ageQuery =
+                from animal in db.animals
+                where animal.age == searchAge
+                select animal;
+
+            Array ageArray = ageQuery.ToArray();
+
+            try
+            {
+                foreach (var result in ageQuery)
+                {
+                    Console.WriteLine($"Located {searchAge}, ID:{result.animal_id}, {result.species}, aged {result.age}");
+                }
+            }
+            catch (InvalidCastException)
+            {
+                Console.WriteLine("Excpetion in Query...");
+            }
+
+            //needs message for when nothing is returned
+
+            NarrowSearch narrowSearchDown = new NarrowSearch();
+            narrowSearchDown.narrowOption(ageArray);
         }
     }
 }
