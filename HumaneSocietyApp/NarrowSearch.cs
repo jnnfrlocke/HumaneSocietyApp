@@ -15,7 +15,8 @@ namespace HumaneSocietyApp
 
             if (continueSearching == "yes")
             {
-
+                ContinueSearch continueSearchingNow = new ContinueSearch();
+                continueSearchingNow.ContinueSearchMenu(arrayToNarrow);
             }
             else
             {
