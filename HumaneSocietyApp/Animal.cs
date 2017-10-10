@@ -116,25 +116,127 @@ namespace HumaneSocietyApp
 
         public void ChangeSpecies()
         {
+            Console.WriteLine("You need the animal's ID to update its species. If you need to search for the animal, type 'search'. To continue, press enter.");
+            string needToSearch = Console.ReadLine();
+
+            if (needToSearch == "search")
+            {
+                Search startSearch = new Search();
+                startSearch.SearchMenu();
+            }
+
+            Console.WriteLine("Enter the ID of the animal whose species you wish to change.");
+            int searchID = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("What is the species of this animal?");
+            string newSpeciesValue = Console.ReadLine();
+
+            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+
+            IQueryable<animal> changeSpeciesQuery =
+                from animal in db.animals
+                where animal.animal_id == searchID
+                select animal;
+
+            foreach (animal animal in changeSpeciesQuery)
+            {
+                animal.species = newSpeciesValue;
+                db.SubmitChanges();
+            }
 
         }
 
         public void ChangeStatus(string task)
         {
-            Search newSearch = new Search();
-            string searchField = newSearch.SearchMenu();
+            Console.WriteLine("You need the animal's ID to update its adoption status. If you need to search for the animal, type 'search'. To continue, press enter.");
+            string needToSearch = Console.ReadLine();
 
+            if (needToSearch == "search")
+            {
+                Search startSearch = new Search();
+                startSearch.SearchMenu();
+            }
 
+            Console.WriteLine("Enter the ID of the animal whose adoption status you wish to change.");
+            int searchID = int.Parse(Console.ReadLine());
 
-            //GetAdoptionStatus();
+            Console.WriteLine("What is the adoption status of this animal?");
+            string newStatusValue = Console.ReadLine();
 
-            var animalStatus = new animal();
-            //var statusChangeAnimal = animalStatus.Where(searchField.is_adopted == "no" ) TODO change adopted status 
+            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+
+            IQueryable<animal> changeStatusQuery =
+                from animal in db.animals
+                where animal.animal_id == searchID
+                select animal;
+
+            foreach (animal animal in changeStatusQuery)
+            {
+                animal.is_adopted = newStatusValue;
+                db.SubmitChanges();
+            }
         }
 
         public void ProcessPayment()
         {
+            int newFee;
+            Console.WriteLine("You need the animal's ID to process an adoption fee payment. If you need to search for the animal, type 'search'. To continue, press enter.");
+            string needToSearch = Console.ReadLine();
 
+            if (needToSearch == "search")
+            {
+                Search startSearch = new Search();
+                startSearch.SearchMenu();
+            }
+
+            Console.WriteLine("Enter the ID of the animal whose adoption fee you wish to process.");
+            int searchID = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Is the adopter paying the full fee? Type 'yes' or 'no'.");
+            string newFeeValue = Console.ReadLine();
+
+            if (newFeeValue == "yes")
+            {
+                newFee = 0;
+                HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+
+                IQueryable<animal> changeFeeQuery =
+                    from animal in db.animals
+                    where animal.animal_id == searchID
+                    select animal;
+
+                foreach (animal animal in changeFeeQuery)
+                {
+                    animal.adoption_fee = newFee;
+                    db.SubmitChanges();
+                }
+            }
+            else if (newFeeValue == "no")
+            {
+                Console.WriteLine("This transaction needs a supervisor's approval. To enter a supervisor's code, type 1. To exit the application, type 2. To begin again, type 3");
+                int supervisorApproval = int.Parse(Console.ReadLine());
+
+                if (supervisorApproval == 1)
+                {
+                    //do supervisor thing
+                }
+                else if (supervisorApproval == 2)
+                {
+                    Environment.Exit(0);
+                }
+                else if (supervisorApproval == 3)
+                {
+                    HumaneSociety startOver = new HumaneSociety();
+                    startOver.Run();
+                }
+            }
+            else
+            {
+                Console.WriteLine("You entered an invalid option.");
+                ProcessPayment();
+            }
+
+            
         }
 
 

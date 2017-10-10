@@ -60,6 +60,7 @@
       <DependentUpon>HumaneSociety.dbml</DependentUpon>
     </Compile>
     <Compile Include="NameSearch.cs" />
+    <Compile Include="NarrowAdoptionFeeSearch.cs" />
     <Compile Include="NarrowSearch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,5 +1,6 @@
 ﻿animal_id,name,species,is_vaccinated,amount_of_food,room,is_adopted,adoption_fee,special_needs,age
-1001,Murray,dog,yes,7,A-1,no,100,no,4
-1002,Oscar,cat,no,3.5,B-6,no,20,yes,6
-1003,Fuzzy,chinchilla,no,1,C-3,no,50,no,1
-1004,Tweety,goldfinch,yes,2,D-2,no,50,yes,3
+,Murray,dog,yes,7,A-1,no,100,no,4
+,Oscar,cat,no,3.5,B-6,no,20,yes,6
+,Fuzzy,chinchilla,no,1,C-3,no,70,no,1
+,Tweety,goldfinch,yes,2,D-2,no,50,yes,3
+,Smiley,dog,yes,7,A-2,no,70,no,6

@@ -8,15 +8,25 @@ namespace HumaneSocietyApp
 {
     class NarrowSearch
     {
-        public void narrowOption(Array arrayToNarrow)
+        private object converter;
+
+        public void narrowOption(Array arrayToBeginNarrow)
         {
+
+            List<string> listToNarrow = new List<string>();
+            
+            foreach (string listItem in arrayToBeginNarrow)
+            {
+                listToNarrow.Add(listItem);
+            }
+            
             Console.WriteLine("Would you like to narrow your search further? Type yes or no.");
             string continueSearching = Console.ReadLine().ToLower();
 
             if (continueSearching == "yes")
             {
                 ContinueSearch continueSearchingNow = new ContinueSearch();
-                continueSearchingNow.ContinueSearchMenu(arrayToNarrow);
+                continueSearchingNow.ContinueSearchMenu(listToNarrow);
             }
             else
             {
@@ -45,7 +55,7 @@ namespace HumaneSocietyApp
 
                             if (endNarrowSearch == "1")
                             {
-                                narrowOption(arrayToNarrow); ;
+                                narrowOption(arrayToBeginNarrow); ;
                             }
                             else if (endNarrowSearch == "2")
                             {
@@ -59,7 +69,7 @@ namespace HumaneSocietyApp
                             else
                             {
                                 Console.WriteLine("You did not enter a valid option.");
-                                narrowOption(arrayToNarrow);
+                                narrowOption(arrayToBeginNarrow);
                             }
                             break;
                     }
@@ -80,7 +90,7 @@ namespace HumaneSocietyApp
                 else
                 {
                     Console.WriteLine("You did not enter a valid option.");
-                    narrowOption(arrayToNarrow);
+                    narrowOption(arrayToBeginNarrow);
                 }
             }
 

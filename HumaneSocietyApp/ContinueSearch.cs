@@ -8,7 +8,7 @@ namespace HumaneSocietyApp
 {
     class ContinueSearch
     {
-             public string ContinueSearchMenu(Array arrayToNarrow)
+             public string ContinueSearchMenu(List<string> listToNarrow)
         {
             Console.WriteLine("Which trait would you like to search by?\nPlease enter one of the following:\nName: type 1\nSpecies: type 2\nAdoption Status: type 3\nSpecial Needs: type 4\nAge: type 5\nAdoptionFee: type 6\nVaccination Status: type 7");
             string searchType = Console.ReadLine().ToLower();
@@ -16,32 +16,32 @@ namespace HumaneSocietyApp
             switch (searchType)
             {
                 case "1":
-                    NameSearch newNameSearch = new NameSearch();
-                    newNameSearch.SearchByName();
+                    NarrowNameSearch newNameSearch = new NarrowNameSearch();
+                    newNameSearch.SearchByName(listToNarrow);
                     break;
                 case "2":
-                    SpeciesSearch newSpeciesSearch = new SpeciesSearch();
-                    newSpeciesSearch.SearchBySpecies();
+                    NarrowSpeciesSearch newSpeciesSearch = new NarrowSpeciesSearch();
+                    newSpeciesSearch.SearchBySpecies(listToNarrow);
                     break;
                 case "3":
-                    AdoptionStatusSearch newAdoptionStatusSearch = new AdoptionStatusSearch();
-                    newAdoptionStatusSearch.SearchByAdoptionStatus();
+                    NarrowAdoptionStatusSearch newAdoptionStatusSearch = new NarrowAdoptionStatusSearch();
+                    newAdoptionStatusSearch.SearchByAdoptionStatus(listToNarrow);
                     break;
                 case "4":
-                    SpecialNeedsSearch newSpecialNeedsSearch = new SpecialNeedsSearch();
-                    newSpecialNeedsSearch.SearchBySpecialNeeds();
+                    NarrowSpecialNeedsSearch newSpecialNeedsSearch = new NarrowSpecialNeedsSearch();
+                    newSpecialNeedsSearch.SearchBySpecialNeeds(listToNarrow);
                     break;
                 case "5":
-                    AgeSearch newAgeSearch = new AgeSearch();
-                    newAgeSearch.SearchByAge();
+                    NarrowAgeSearch newAgeSearch = new NarrowAgeSearch();
+                    newAgeSearch.SearchByAge(listToNarrow);
                     break;
                 case "6":
-                    AdoptionFeeSearch newAdoptionFeeSearch = new AdoptionFeeSearch();
-                    newAdoptionFeeSearch.SearchByAdoptionFee();
+                    NarrowAdoptionFeeSearch newAdoptionFeeSearch = new NarrowAdoptionFeeSearch();
+                    newAdoptionFeeSearch.SearchByAdoptionFee(listToNarrow);
                     break;
                 case "7":
-                    VaccinationStatusSearch newVaccionationStatusSearch = new VaccinationStatusSearch();
-                    newVaccionationStatusSearch.SearchByVaccinationStatus();
+                    NarrowVaccinationStatusSearch newVaccionationStatusSearch = new NarrowVaccinationStatusSearch();
+                    newVaccionationStatusSearch.SearchByVaccinationStatus(listToNarrow);
                     break;
                 default:
                     Console.WriteLine("You did not enter a valid option. Would you like to continue, exit the application, or restart? Type 1 to continue, 2 to exit, or 3 to restart.");
@@ -49,7 +49,7 @@ namespace HumaneSocietyApp
 
                     if (endContinueSearch == "1")
                     {
-                        ContinueSearchMenu(arrayToNarrow);
+                        ContinueSearchMenu(listToNarrow);
                     }
                     else if (endContinueSearch == "2")
                     {
@@ -63,7 +63,7 @@ namespace HumaneSocietyApp
                     else
                     {
                         Console.WriteLine("You did not enter a valid option.");
-                        ContinueSearchMenu(arrayToNarrow);
+                        ContinueSearchMenu(listToNarrow);
                     }                    
                     break;
             }

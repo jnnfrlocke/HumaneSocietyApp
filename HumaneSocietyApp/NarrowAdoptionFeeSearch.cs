@@ -8,25 +8,29 @@ namespace HumaneSocietyApp
 {
     class NarrowAdoptionFeeSearch
     {
-        public void SearchByAdoptionFee()// pass in array created by previous search
+        public void SearchByAdoptionFee(List<string> arrayToNarrow)
         {
             Console.WriteLine("What adoption fee are you looking for?");
-            float searchAdoptionFee = float.Parse(Console.ReadLine());
+            string searchAdoptionFee = Console.ReadLine();
+            
+            var adoptionFeeQuery = from fee in arrayToNarrow
+                                   where fee.Contains(searchAdoptionFee)
+                                   select fee;
 
-            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
 
-            IQueryable<animal> adoptionFeeQuery =
-                from animal in db.animals
-                where animal.adoption_fee == searchAdoptionFee
-                select animal;
 
-            Array namesArray = adoptionFeeQuery.ToArray();
+            //var adoptionFeeQuery =
+            //    from animal in arrayToNarrow
+            //    where animal.adoption_fee == searchAdoptionFee
+            //    select animal;
+
+            string[] adoptionFeeSearchArray = adoptionFeeQuery.ToArray();
 
             try
             {
                 foreach (var result in adoptionFeeQuery)
                 {
-                    Console.WriteLine($"Located {result.name}, {result.adoption_fee}, ID:{result.animal_id}, {result.species}, aged {result.age}");
+                    Console.WriteLine($"Narrowed results: {result}");
                 }
             }
             catch (InvalidCastException)
@@ -37,7 +41,7 @@ namespace HumaneSocietyApp
             // nothing found
 
             NarrowSearch narrowSearchDown = new NarrowSearch();
-            narrowSearchDown.narrowOption(namesArray);
+            narrowSearchDown.narrowOption(adoptionFeeSearchArray);
         }
     }
 }

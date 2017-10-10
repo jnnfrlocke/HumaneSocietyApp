@@ -20,8 +20,8 @@ namespace HumaneSocietyApp
                 where animal.adoption_fee == searchAdoptionFee
                 select animal;
 
-            Array namesArray = adoptionFeeQuery.ToArray();
-
+            Array adoptionFeeSearchArray = adoptionFeeQuery.ToArray();
+            
             try
             {
                 foreach (var result in adoptionFeeQuery)
@@ -37,7 +37,7 @@ namespace HumaneSocietyApp
             // nothing found
 
             NarrowSearch narrowSearchDown = new NarrowSearch();
-            narrowSearchDown.narrowOption(namesArray);
+            narrowSearchDown.narrowOption(adoptionFeeSearchArray);
         }
     }
 }
