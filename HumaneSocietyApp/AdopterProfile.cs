@@ -42,7 +42,7 @@ namespace HumaneSocietyApp
             getCurrentPets = GetCurrentPets(); //create new classes to deal with tables?
             getVeterinarian = GetVeterinarian();// How to do with 2 tables??
             getHomeVisitPossibility = GetHomeVisitPossibility();
-            GetLifestyleTraits();
+            //GetLifestyleTraits();
 
             adopter adopterToInsert = new adopter
             {
@@ -62,11 +62,25 @@ namespace HumaneSocietyApp
 
             HSDataDataContext addAdopter = new HSDataDataContext();
 
+            int numberOfAdoptionProfiles = addAdopter.adopters.Count();
+
             addAdopter.adopters.InsertOnSubmit(adopterToInsert);
             addAdopter.SubmitChanges();
 
-
-
+            if (addAdopter.adopters.Count() >= numberOfAdoptionProfiles)
+            {
+                Console.WriteLine("Profile created successfully. Enter 1 to search the animals or 2 to exit.");
+                int profileSuccess = int.Parse(Console.ReadLine());
+                if (profileSuccess == 2)
+                {
+                    Environment.Exit(0);
+                }
+                else if (profileSuccess == 1)
+                {
+                    AdopterSearch newSearch = new AdopterSearch();
+                    newSearch.SearchMenu();
+                }
+            }
         }
 
         private string GetName()
