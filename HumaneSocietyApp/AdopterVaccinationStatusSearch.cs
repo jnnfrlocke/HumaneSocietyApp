@@ -10,10 +10,8 @@ namespace HumaneSocietyApp
     {
         public void SearchByVaccinationStatus(List<animal> listToNarrow)
         {
-            Console.WriteLine("Are you looking for animals with special needs? Type yes or no.");
+            Console.WriteLine("Would you prefer your pet to already be vaccinated? Type yes or no.");
             string searchVaccinationStatus = Console.ReadLine();
-
-            HSDataDataContext db = new HSDataDataContext();
 
             var vaccinationStatusQuery =
                 from animal in listToNarrow
@@ -43,20 +41,23 @@ namespace HumaneSocietyApp
                         Console.WriteLine("You did not enter a valid option.");
                         SearchByVaccinationStatus(listToNarrow);
                     }
+                }
                     foreach (var result in vaccinationStatusQuery)
                     {
                         Console.WriteLine($"Located {searchVaccinationStatus}, ID:{result.animal_id}, {result.name}, aged {result.age}");
 
-                        AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
-                        narrowSearchDown.adopterNarrowOption(adopterVaccinationStatusList);
+                        
                     }
-                }
+                
             }
             catch (InvalidCastException)
             {
                 Console.WriteLine("Excpetion in Query...");
                 SearchByVaccinationStatus(listToNarrow);
             }
+
+            AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
+            narrowSearchDown.adopterNarrowOption(adopterVaccinationStatusList);
 
         }
     }

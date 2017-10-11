@@ -10,7 +10,7 @@ namespace HumaneSocietyApp
     {
         public string ContinueSearchMenu(List<animal> listToNarrow)
         {
-            Console.WriteLine("Which trait would you like to search by?\nPlease enter one of the following:\nSpecies: type 1\nSpecial needs: type 2\nAge: type 3\nAdoption fee: type 4");
+            Console.WriteLine("Which trait would you like to search by?\nPlease enter one of the following:\nSpecies: type 1\nSpecial needs: type 2\nAge: type 3\nAdoption fee: type 4\nVaccinationStatus: type 5");
             string searchType = Console.ReadLine().ToLower();
 
             switch (searchType)
@@ -27,11 +27,11 @@ namespace HumaneSocietyApp
                     AdopterAgeSearch newAgeSearch = new AdopterAgeSearch();
                     newAgeSearch.SearchByAge(listToNarrow);
                     break;
-                case "4":
+                case "5":
                     AdopterVaccinationStatusSearch newVaccionationStatusSearch = new AdopterVaccinationStatusSearch();
                     newVaccionationStatusSearch.SearchByVaccinationStatus(listToNarrow);
                     break;
-                case "5":
+                case "4":
                     AdopterAdoptionFeeSearch newAdoptionFeeSearch = new AdopterAdoptionFeeSearch();
                     newAdoptionFeeSearch.SearchByAdoptionFee(listToNarrow);
                     break;

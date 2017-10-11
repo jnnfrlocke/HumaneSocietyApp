@@ -10,10 +10,8 @@ namespace HumaneSocietyApp
     {
         public void SearchByAdoptionFee(List<animal> listToNarrow)
         {
-            Console.WriteLine("Are you looking for animals with special needs? Type yes or no.");
+            Console.WriteLine("What adoption fee would you like to pay?");
             string searchAdoptionFee = Console.ReadLine();
-
-            HSDataDataContext db = new HSDataDataContext();
 
             var adoptionFeeQuery =
                 from animal in listToNarrow
@@ -43,20 +41,21 @@ namespace HumaneSocietyApp
                         Console.WriteLine("You did not enter a valid option.");
                         SearchByAdoptionFee(listToNarrow);
                     }
+                }
                     foreach (var result in adoptionFeeQuery)
                     {
                         Console.WriteLine($"Located {searchAdoptionFee}, ID:{result.animal_id}, {result.name}, aged {result.age}");
 
-                        AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
-                        narrowSearchDown.adopterNarrowOption(adopterAdoptionFeeList);
                     }
-                }
+                
             }
             catch (InvalidCastException)
             {
                 Console.WriteLine("Excpetion in Query...");
                 SearchByAdoptionFee(listToNarrow);
             }
+            AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
+            narrowSearchDown.adopterNarrowOption(adopterAdoptionFeeList);
 
         }
     }

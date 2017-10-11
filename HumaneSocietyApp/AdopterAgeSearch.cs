@@ -13,8 +13,6 @@ namespace HumaneSocietyApp
             Console.WriteLine("What age would you like to search for?");
             string searchAge = Console.ReadLine();
 
-            HSDataDataContext db = new HSDataDataContext();
-
             var ageQuery =
                 from animal in listToNarrow
                 where animal.age == searchAge
@@ -43,20 +41,22 @@ namespace HumaneSocietyApp
                         Console.WriteLine("You did not enter a valid option.");
                         SearchByAge(listToNarrow);
                     }
+                }
                     foreach (var result in ageQuery)
                     {
                         Console.WriteLine($"Located {searchAge}, ID:{result.animal_id}, {result.name}, aged {result.age}");
 
-                        AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
-                        narrowSearchDown.adopterNarrowOption(ageList);
+                        
                     }
-                }
+                
             }
             catch (InvalidCastException)
             {
                 Console.WriteLine("Excpetion in Query...");
                 SearchByAge(listToNarrow);
             }
+            AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
+            narrowSearchDown.adopterNarrowOption(ageList);
 
         }
     }

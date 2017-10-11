@@ -12,9 +12,7 @@ namespace HumaneSocietyApp
         {
             Console.WriteLine("Please enter a species.");
             string searchSpecies = Console.ReadLine();
-
-            HSDataDataContext db = new HSDataDataContext();
-
+            
             var speciesQuery =
                 from animal in listToNarrow
                 where animal.species == searchSpecies
@@ -42,20 +40,24 @@ namespace HumaneSocietyApp
                         Console.WriteLine("You did not enter a valid option.");
                         SearchBySpecies(listToNarrow);
                     }
-                    foreach (var result in speciesQuery)
-                    {
-                        Console.WriteLine($"Located {searchSpecies}, ID:{result.animal_id}, {result.name}, aged {result.age}");
-
-                        AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
-                        narrowSearchDown.adopterNarrowOption(adopterSpeciesList);
-                    }
                 }
+
+                foreach (var result in speciesQuery)
+                {
+                Console.WriteLine($"Located {searchSpecies}, ID:{result.animal_id}, {result.name}, aged {result.age}");
+
+               
+                }
+                
             }
             catch (InvalidCastException)
             {
                 Console.WriteLine("Excpetion in Query...");
                 SearchBySpecies(listToNarrow);
             }
+
+            AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
+            narrowSearchDown.adopterNarrowOption(adopterSpeciesList);
 
 
         }
