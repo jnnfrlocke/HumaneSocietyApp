@@ -6,58 +6,59 @@ using System.Threading.Tasks;
 
 namespace HumaneSocietyApp
 {
-    public class AdopterSpeciesSearch
+    class AdopterSpecialNeedsSearch
     {
-        public void SearchBySpecies(List<animal> listToNarrow)
+       public void SearchBySpecialNeeds(List<animal> listToNarrow)
         {
-            Console.WriteLine("Please enter a species.");
-            string searchSpecies = Console.ReadLine();
+            Console.WriteLine("Are you looking for animals with special needs? Type yes or no.");
+            string searchSpecialNeeds = Console.ReadLine();
 
             HSDataDataContext db = new HSDataDataContext();
 
-            var speciesQuery =
+            var specialNeedsQuery =
                 from animal in listToNarrow
-                where animal.species == searchSpecies
+                where animal.special_needs == searchSpecialNeeds
                 select animal;
-            List<animal> adopterSpeciesList = speciesQuery.ToList();
+
+            List<animal> adopterSpecialNeedsList = specialNeedsQuery.ToList();
 
             try
             {
-                if (speciesQuery.Count() < 1)
+                if (specialNeedsQuery.Count() < 1)
                 {
                     Console.WriteLine("No results found.\nWould you like to exit the application or start over? Type 1 to exit or 2 to start over.");
-                    string speciesSearch = Console.ReadLine();
+                    string specialNeedsSearch = Console.ReadLine();
 
-                    if (speciesSearch == "1")
+                    if (specialNeedsSearch == "1")
                     {
                         Environment.Exit(0);
                     }
-                    else if (speciesSearch == "2")
+                    else if (specialNeedsSearch == "2")
                     {
                         HumaneSociety startOver = new HumaneSociety();
                         startOver.Run();
                     }
-                    else
+                   else
                     {
                         Console.WriteLine("You did not enter a valid option.");
-                        SearchBySpecies(listToNarrow);
+                        SearchBySpecialNeeds(listToNarrow);
                     }
-                    foreach (var result in speciesQuery)
+                    foreach (var result in specialNeedsQuery)
                     {
-                        Console.WriteLine($"Located {searchSpecies}, ID:{result.animal_id}, {result.name}, aged {result.age}");
+                        Console.WriteLine($"Located {searchSpecialNeeds}, ID:{result.animal_id}, {result.name}, aged {result.age}");
 
                         AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
-                        narrowSearchDown.adopterNarrowOption(adopterSpeciesList);
+                        narrowSearchDown.adopterNarrowOption(adopterSpecialNeedsList);
                     }
                 }
             }
             catch (InvalidCastException)
             {
                 Console.WriteLine("Excpetion in Query...");
-                SearchBySpecies(listToNarrow);
+                SearchBySpecialNeeds(listToNarrow);
             }
 
-
         }
+
     }
-}
+    }

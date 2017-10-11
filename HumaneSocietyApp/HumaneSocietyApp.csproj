@@ -45,12 +45,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adopter.cs" />
+    <Compile Include="AdopterAdoptionFeeSearch.cs" />
+    <Compile Include="AdopterAgeSearch.cs" />
+    <Compile Include="AdopterContinueSearch.cs" />
     <Compile Include="AdopterLifestyle.cs" />
+    <Compile Include="AdopterNarrowSearch.cs" />
     <Compile Include="AdopterProfile.cs" />
+    <Compile Include="AdopterSearch.cs" />
+    <Compile Include="AdopterSpecialNeedsSearch.cs" />
+    <Compile Include="AdopterSpeciesSearch.cs" />
+    <Compile Include="AdopterVaccinationStatusSearch.cs" />
     <Compile Include="AdoptionFeeSearch.cs" />
     <Compile Include="AdoptionStatusSearch.cs" />
     <Compile Include="AgeSearch.cs" />
     <Compile Include="Animal.cs" />
+    <Compile Include="CodeClips.cs" />
     <Compile Include="ContinueSearch.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="HSData.designer.cs">

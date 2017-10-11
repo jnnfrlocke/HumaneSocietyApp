@@ -6,33 +6,34 @@ using System.Threading.Tasks;
 
 namespace HumaneSocietyApp
 {
-    public class AdopterSpeciesSearch
+    class AdopterAdoptionFeeSearch
     {
-        public void SearchBySpecies(List<animal> listToNarrow)
+        public void SearchByAdoptionFee(List<animal> listToNarrow)
         {
-            Console.WriteLine("Please enter a species.");
-            string searchSpecies = Console.ReadLine();
+            Console.WriteLine("Are you looking for animals with special needs? Type yes or no.");
+            string searchAdoptionFee = Console.ReadLine();
 
             HSDataDataContext db = new HSDataDataContext();
 
-            var speciesQuery =
+            var adoptionFeeQuery =
                 from animal in listToNarrow
-                where animal.species == searchSpecies
+                where animal.adoption_fee == searchAdoptionFee
                 select animal;
-            List<animal> adopterSpeciesList = speciesQuery.ToList();
+
+            List<animal> adopterAdoptionFeeList = adoptionFeeQuery.ToList();
 
             try
             {
-                if (speciesQuery.Count() < 1)
+                if (adoptionFeeQuery.Count() < 1)
                 {
                     Console.WriteLine("No results found.\nWould you like to exit the application or start over? Type 1 to exit or 2 to start over.");
-                    string speciesSearch = Console.ReadLine();
+                    string adoptionFeeSearch = Console.ReadLine();
 
-                    if (speciesSearch == "1")
+                    if (adoptionFeeSearch == "1")
                     {
                         Environment.Exit(0);
                     }
-                    else if (speciesSearch == "2")
+                    else if (adoptionFeeSearch == "2")
                     {
                         HumaneSociety startOver = new HumaneSociety();
                         startOver.Run();
@@ -40,23 +41,22 @@ namespace HumaneSocietyApp
                     else
                     {
                         Console.WriteLine("You did not enter a valid option.");
-                        SearchBySpecies(listToNarrow);
+                        SearchByAdoptionFee(listToNarrow);
                     }
-                    foreach (var result in speciesQuery)
+                    foreach (var result in adoptionFeeQuery)
                     {
-                        Console.WriteLine($"Located {searchSpecies}, ID:{result.animal_id}, {result.name}, aged {result.age}");
+                        Console.WriteLine($"Located {searchAdoptionFee}, ID:{result.animal_id}, {result.name}, aged {result.age}");
 
                         AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
-                        narrowSearchDown.adopterNarrowOption(adopterSpeciesList);
+                        narrowSearchDown.adopterNarrowOption(adopterAdoptionFeeList);
                     }
                 }
             }
             catch (InvalidCastException)
             {
                 Console.WriteLine("Excpetion in Query...");
-                SearchBySpecies(listToNarrow);
+                SearchByAdoptionFee(listToNarrow);
             }
-
 
         }
     }

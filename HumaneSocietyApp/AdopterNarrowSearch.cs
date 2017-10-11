@@ -8,16 +8,17 @@ namespace HumaneSocietyApp
 {
     class AdopterNarrowSearch
     {
-        public void adopterNarrowOption(List<animal> adopterSpeciesList) { 
-        List<animal> listToNarrow = new List<animal>();
-            
-    Console.WriteLine("Would you like to narrow your search further? Type yes or no.");
+        public void adopterNarrowOption(List<animal> adopterSpeciesList)
+        {
+            List<animal> listToNarrow = new List<animal>();
+
+            Console.WriteLine("Would you like to narrow your search further? Type yes or no.");
             string continueSearching = Console.ReadLine().ToLower();
 
             if (continueSearching == "yes")
             {
-                ContinueSearch continueSearchingNow = new ContinueSearch();
-    continueSearchingNow.ContinueSearchMenu(listToNarrow);
+                AdopterContinueSearch continueSearchingNow = new AdopterContinueSearch();
+                continueSearchingNow.ContinueSearchMenu(listToNarrow);
             }
             else if (continueSearching == "no")
             {
@@ -34,12 +35,12 @@ namespace HumaneSocietyApp
                     HumaneSociety startOver = new HumaneSociety();
                     startOver.Run();
                 }
-               else
+                else
                 {
                     Console.WriteLine("You did not enter a valid option.");
                     adopterNarrowOption(adopterSpeciesList);
                 }
             }
-
+        }
     }
 }

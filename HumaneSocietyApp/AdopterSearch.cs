@@ -10,41 +10,42 @@ namespace HumaneSocietyApp
     {
         public string SearchMenu()
         {
+            HSDataDataContext db = new HSDataDataContext();
+
+            IQueryable<animal> adoptableAnimals =
+                from animal in db.animals
+                where animal.is_adopted == "no"
+                select animal;
+
+            List<animal> adoptableAnimalList = adoptableAnimals.ToList();
+
             Console.WriteLine("Which trait would you like to search by?\nPlease enter one of the following:\nSpecies: type 1\nSpecial Needs: type 2\nAge: type 3\nAdoptionFee: type 4\nVaccination Status: type 5");
             string searchType = Console.ReadLine().ToLower();
 
             switch (searchType)
             {
-                case "1"://species
-                    NameSearch newNameSearch = new NameSearch();
-                    newNameSearch.SearchByName();
+                case "1":
+                    AdopterSpeciesSearch newSpeciesSearch = new AdopterSpeciesSearch();
+                    newSpeciesSearch.SearchBySpecies(adoptableAnimalList);
                     break;
-                case "2"://special needs
-                    SpeciesSearch newSpeciesSearch = new SpeciesSearch();
-                    newSpeciesSearch.SearchBySpecies();
+                case "2":
+                    AdopterSpecialNeedsSearch newSpecialNeedsSearch = new AdopterSpecialNeedsSearch();
+                    newSpecialNeedsSearch.SearchBySpecialNeeds(adoptableAnimalList);
                     break;
-                case "3"://age
-                    AdoptionStatusSearch newAdoptionStatusSearch = new AdoptionStatusSearch();
-                    newAdoptionStatusSearch.SearchByAdoptionStatus();
-                    break;
-                case "4"://adoption fee
-                    SpecialNeedsSearch newSpecialNeedsSearch = new SpecialNeedsSearch();
-                    newSpecialNeedsSearch.SearchBySpecialNeeds();
-                    break;
-                case "5"://vaccination status
+                case "3":
                     AgeSearch newAgeSearch = new AgeSearch();
                     newAgeSearch.SearchByAge();
                     break;
-                case "6":
+                case "4":
                     AdoptionFeeSearch newAdoptionFeeSearch = new AdoptionFeeSearch();
                     newAdoptionFeeSearch.SearchByAdoptionFee();
                     break;
-                case "7":
+                case "5":
                     VaccinationStatusSearch newVaccionationStatusSearch = new VaccinationStatusSearch();
                     newVaccionationStatusSearch.SearchByVaccinationStatus();
                     break;
                 default:
-                    Console.WriteLine("Please type a valid entry.");
+                    Console.WriteLine("You typed an invalid entry.\nTo continue your search, enter 1. To exit the application, type 2. To start over, type 3");
                     string endContinueSearch = Console.ReadLine();
 
                     if (endContinueSearch == "1")
@@ -79,7 +80,7 @@ namespace HumaneSocietyApp
                 where animal.is_adopted == "no"
                 select animal;
 
-            List < animal > adoptableAnimalList = adoptableAnimals.ToList<animal>();
+            List < animal > adoptableAnimalList = adoptableAnimals.ToList();
 
             return adoptableAnimalList;
         }

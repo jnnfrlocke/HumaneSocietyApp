@@ -15,7 +15,7 @@ namespace HumaneSocietyApp
 
             if (adopterSelection == "search")
             {
-                Search adopterSearch = new Search();
+                AdopterSearch adopterSearch = new AdopterSearch();
                 adopterSearch.SearchMenu();
             }
             else if (adopterSelection == "new profile")

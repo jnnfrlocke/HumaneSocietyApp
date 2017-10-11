@@ -47,7 +47,7 @@ namespace HumaneSocietyApp
                     newVaccionationStatusSearch.SearchByVaccinationStatus();
                     break;
                 default:
-                    Console.WriteLine("Please type a valid entry.");
+                    Console.WriteLine("You typed an invalid entry.\nTo continue your search, enter 1. To exit the application, type 2. To start over, type 3");
                     string endContinueSearch = Console.ReadLine();
 
                     if (endContinueSearch == "1")

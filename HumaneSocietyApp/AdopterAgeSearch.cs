@@ -6,33 +6,34 @@ using System.Threading.Tasks;
 
 namespace HumaneSocietyApp
 {
-    public class AdopterSpeciesSearch
+    class AdopterAgeSearch
     {
-        public void SearchBySpecies(List<animal> listToNarrow)
+        public void SearchByAge(List<animal> listToNarrow)
         {
-            Console.WriteLine("Please enter a species.");
-            string searchSpecies = Console.ReadLine();
+            Console.WriteLine("What age would you like to search for?");
+            string searchAge = Console.ReadLine();
 
             HSDataDataContext db = new HSDataDataContext();
 
-            var speciesQuery =
+            var ageQuery =
                 from animal in listToNarrow
-                where animal.species == searchSpecies
+                where animal.age == searchAge
                 select animal;
-            List<animal> adopterSpeciesList = speciesQuery.ToList();
+
+            List<animal> ageList = ageQuery.ToList();
 
             try
             {
-                if (speciesQuery.Count() < 1)
+                if (ageQuery.Count() < 1)
                 {
                     Console.WriteLine("No results found.\nWould you like to exit the application or start over? Type 1 to exit or 2 to start over.");
-                    string speciesSearch = Console.ReadLine();
+                    string ageSearch = Console.ReadLine();
 
-                    if (speciesSearch == "1")
+                    if (ageSearch == "1")
                     {
                         Environment.Exit(0);
                     }
-                    else if (speciesSearch == "2")
+                    else if (ageSearch == "2")
                     {
                         HumaneSociety startOver = new HumaneSociety();
                         startOver.Run();
@@ -40,23 +41,22 @@ namespace HumaneSocietyApp
                     else
                     {
                         Console.WriteLine("You did not enter a valid option.");
-                        SearchBySpecies(listToNarrow);
+                        SearchByAge(listToNarrow);
                     }
-                    foreach (var result in speciesQuery)
+                    foreach (var result in ageQuery)
                     {
-                        Console.WriteLine($"Located {searchSpecies}, ID:{result.animal_id}, {result.name}, aged {result.age}");
+                        Console.WriteLine($"Located {searchAge}, ID:{result.animal_id}, {result.name}, aged {result.age}");
 
                         AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
-                        narrowSearchDown.adopterNarrowOption(adopterSpeciesList);
+                        narrowSearchDown.adopterNarrowOption(ageList);
                     }
                 }
             }
             catch (InvalidCastException)
             {
                 Console.WriteLine("Excpetion in Query...");
-                SearchBySpecies(listToNarrow);
+                SearchByAge(listToNarrow);
             }
-
 
         }
     }
