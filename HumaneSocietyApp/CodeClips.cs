@@ -6,29 +6,21 @@ using System.Threading.Tasks;
 
 namespace HumaneSocietyApp
 {
-    class NarrowSearch
+    class CodeClips
     {
-        public void narrowOption(Array arrayToBeginNarrow)
-        {
-            
-            List<animal> listToNarrow = new List<animal>();
-            
-            foreach (animal listItem in arrayToBeginNarrow)
-            {
-                listToNarrow.Add(listItem);
-            }
-            
-            Console.WriteLine("Would you like to narrow your search further? Type yes or no.");
+        //End/Restart/Continue
+        public void EndRestartContinue()
+        {Console.WriteLine("Would you like to narrow your search further? Type yes or no.");
             string continueSearching = Console.ReadLine().ToLower();
 
             if (continueSearching == "yes")
             {
                 ContinueSearch continueSearchingNow = new ContinueSearch();
-                continueSearchingNow.ContinueSearchMenu(listToNarrow);
+        continueSearchingNow.ContinueSearchMenu(listToNarrow);
             }
             else
             {
-                Console.WriteLine("Would you like to modify an animal's record, exit the application, or start over? Type 1 to modify an animal's record, 2 to exit, or 3 to start over.");
+                Console.WriteLine("Would you like to perform an action on an animal's record, exit the application, or start over? Type 1 to edit an animal's record, 2 to exit, or 3 to start over.");
                 string endOrRestart = Console.ReadLine().ToLower();
 
                 if (endOrRestart == "1")
@@ -40,15 +32,15 @@ namespace HumaneSocietyApp
                     {
                         case "1":
                             Animal changeSpecies = new Animal();
-                            changeSpecies.ChangeSpecies();
+    changeSpecies.ChangeSpecies();
                             break;
                         case "2":
                             Animal changeAdoptionStatus = new Animal();
-                            changeAdoptionStatus.ChangeStatus();
+    changeAdoptionStatus.ChangeStatus();
                             break;
                         case "3":
                             Animal processAdoptionFee = new Animal();
-                            processAdoptionFee.ProcessPayment();
+    processAdoptionFee.ProcessPayment();
                             break;
                         default:
                             Console.WriteLine("You entered an invalid option. Would you like to continue, exit the application or start over? Type 1 to continue, 2 to exit, or 3 to start over.");
@@ -65,7 +57,7 @@ namespace HumaneSocietyApp
                             else if (endNarrowSearch == "3")
                             {
                                 HumaneSociety startOver = new HumaneSociety();
-                                startOver.Run();
+startOver.Run();
                             }
                             else
                             {
@@ -74,6 +66,8 @@ namespace HumaneSocietyApp
                             }
                             break;
                     }
+                        
+                   
                 }
 
                 else if (endOrRestart == "2")
@@ -83,7 +77,7 @@ namespace HumaneSocietyApp
                 else if (endOrRestart == "3")
                 {
                     HumaneSociety startOver = new HumaneSociety();
-                    startOver.Run();
+startOver.Run();
                 }
 
                 else
@@ -92,7 +86,5 @@ namespace HumaneSocietyApp
                     narrowOption(arrayToBeginNarrow);
                 }
             }
-
-        }
     }
-}
+

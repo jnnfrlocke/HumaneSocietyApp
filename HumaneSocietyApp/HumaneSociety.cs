@@ -11,9 +11,9 @@ using Microsoft.VisualBasic;
 
 namespace HumaneSocietyApp
 {
-    partial class HumaneSocietyDataContext
-    {
-    }
+    //partial class HumaneSocietyDataContext
+    //{
+    //}
 
     public class HumaneSociety
     {
@@ -69,7 +69,7 @@ namespace HumaneSocietyApp
              //var importCSV = new
         }
 
-       
+        
 
 
 

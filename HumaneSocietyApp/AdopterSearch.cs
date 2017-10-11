@@ -3,38 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Linq.Mapping;
-using System.Data.Linq;
 
 namespace HumaneSocietyApp
 {
-    
-    public class Search
+    public class AdopterSearch
     {
         public string SearchMenu()
         {
-            Console.WriteLine("Which trait would you like to search by?\nPlease enter one of the following:\nName: type 1\nSpecies: type 2\nAdoption Status: type 3\nSpecial Needs: type 4\nAge: type 5\nAdoptionFee: type 6\nVaccination Status: type 7");
+            Console.WriteLine("Which trait would you like to search by?\nPlease enter one of the following:\nSpecies: type 1\nSpecial Needs: type 2\nAge: type 3\nAdoptionFee: type 4\nVaccination Status: type 5");
             string searchType = Console.ReadLine().ToLower();
 
             switch (searchType)
             {
-                case "1":
+                case "1"://species
                     NameSearch newNameSearch = new NameSearch();
                     newNameSearch.SearchByName();
                     break;
-                case "2":
+                case "2"://special needs
                     SpeciesSearch newSpeciesSearch = new SpeciesSearch();
                     newSpeciesSearch.SearchBySpecies();
                     break;
-                case "3":
+                case "3"://age
                     AdoptionStatusSearch newAdoptionStatusSearch = new AdoptionStatusSearch();
                     newAdoptionStatusSearch.SearchByAdoptionStatus();
                     break;
-                case "4":
+                case "4"://adoption fee
                     SpecialNeedsSearch newSpecialNeedsSearch = new SpecialNeedsSearch();
                     newSpecialNeedsSearch.SearchBySpecialNeeds();
                     break;
-                case "5":
+                case "5"://vaccination status
                     AgeSearch newAgeSearch = new AgeSearch();
                     newAgeSearch.SearchByAge();
                     break;
@@ -42,7 +39,7 @@ namespace HumaneSocietyApp
                     AdoptionFeeSearch newAdoptionFeeSearch = new AdoptionFeeSearch();
                     newAdoptionFeeSearch.SearchByAdoptionFee();
                     break;
-               case "7":
+                case "7":
                     VaccinationStatusSearch newVaccionationStatusSearch = new VaccinationStatusSearch();
                     newVaccionationStatusSearch.SearchByVaccinationStatus();
                     break;
@@ -72,9 +69,19 @@ namespace HumaneSocietyApp
             }
             return searchType;
         }
+
+        public List<animal> NarrowToAdoptableAnimals()
+        {
+            HSDataDataContext db = new HSDataDataContext();
+
+            IQueryable<animal> adoptableAnimals =
+                from animal in db.animals
+                where animal.is_adopted == "no"
+                select animal;
+
+            List < animal > adoptableAnimalList = adoptableAnimals.ToList<animal>();
+
+            return adoptableAnimalList;
+        }
     }
-
-
-
-
 }

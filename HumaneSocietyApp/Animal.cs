@@ -47,6 +47,30 @@ namespace HumaneSocietyApp
 
             addAnimal.animals.InsertOnSubmit(animalToInsert);
             addAnimal.SubmitChanges();
+
+            Console.WriteLine("Animal added successfully. Would you like to return to the employee menu, exit the application, or restart? Type 1 to return to the employee menu, 2 to exit, or 3 to restart.");
+            string endAddAnimal = Console.ReadLine();
+
+            if (endAddAnimal == "1")
+            {
+                Employee employeeMenu = new Employee();
+                employeeMenu.EmployeeOptions();
+            }
+            else if (endAddAnimal == "2")
+            {
+                Environment.Exit(0);
+            }
+            else if (endAddAnimal == "3")
+            {
+                HumaneSociety startOver = new HumaneSociety();
+                startOver.Run();
+            }
+            else
+            {
+                Console.WriteLine("You did not enter a valid option.");
+                Add();
+            }
+
         }
 
         private string GetName()
@@ -146,7 +170,7 @@ namespace HumaneSocietyApp
 
         }
 
-        public void ChangeStatus(string task)
+        public void ChangeStatus() // previously had 'string task' being passed in
         {
             Console.WriteLine("You need the animal's ID to update its adoption status. If you need to search for the animal, type 'search'. To continue, press enter.");
             string needToSearch = Console.ReadLine();
