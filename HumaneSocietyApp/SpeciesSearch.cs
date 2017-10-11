@@ -13,7 +13,7 @@ namespace HumaneSocietyApp
             Console.WriteLine("Please enter a species.");
             string searchSpecies = Console.ReadLine();
 
-            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+            HSDataDataContext db = new HSDataDataContext();
 
             IQueryable<animal> speciesQuery =
                 from animal in db.animals

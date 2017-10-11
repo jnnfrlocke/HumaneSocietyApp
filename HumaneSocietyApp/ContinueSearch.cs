@@ -8,7 +8,7 @@ namespace HumaneSocietyApp
 {
     class ContinueSearch
     {
-             public string ContinueSearchMenu(List<string> listToNarrow)
+             public string ContinueSearchMenu(List<animal> listToNarrow)
         {
             Console.WriteLine("Which trait would you like to search by?\nPlease enter one of the following:\nName: type 1\nSpecies: type 2\nAdoption Status: type 3\nSpecial Needs: type 4\nAge: type 5\nAdoptionFee: type 6\nVaccination Status: type 7");
             string searchType = Console.ReadLine().ToLower();

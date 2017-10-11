@@ -13,20 +13,20 @@ namespace HumaneSocietyApp
             Console.WriteLine("Please enter the animal's name");
             string searchName = Console.ReadLine();
 
-            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+            HSDataDataContext db = new HSDataDataContext();
 
             IQueryable<animal> namesQuery =
                 from animal in db.animals
                 where animal.name == searchName
                 select animal;
 
-            Array namesArray = namesQuery.ToArray();
+            
 
             try
             {
                 foreach (var result in namesQuery)
                 {
-                    Console.WriteLine($"Located {searchName}, ID:{result.animal_id}, {result.species}, aged {result.age}");
+                    Console.WriteLine($"Located {searchName}, ID:{result.animal_id.ToString()}, {result.species}, aged {result.age}");
                 }
             }
             catch (InvalidCastException)
@@ -35,6 +35,8 @@ namespace HumaneSocietyApp
             }
 
             //need something for if no results
+
+            Array namesArray = namesQuery.ToArray();
 
             NarrowSearch narrowSearchDown = new NarrowSearch();
             narrowSearchDown.narrowOption(namesArray);

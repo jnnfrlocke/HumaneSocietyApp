@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.75" name="HSData">
+  <DataContextMoniker Name="/HSDataDataContext" />
+  <nestedChildShapes>
+    <classShape Id="78f6929f-0dc0-462b-a4b0-a166431b66e3" absoluteBounds="3.5, 1, 2, 4.0785139973958326">
+      <DataClassMoniker Name="/HSDataDataContext/adopter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ade7b47d-ce42-4854-8b60-1c09f7cff7d2" absoluteBounds="3.515, 1.46, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e39a68cc-9acb-401b-804c-56f54664bed4" absoluteBounds="6.25, 2.375, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/HSDataDataContext/visit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f4ff502f-4329-47e1-b2dc-524aa776068e" absoluteBounds="6.265, 2.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ab887ca8-e9b1-4fe9-8a5c-4847674384b8" absoluteBounds="0.75, 6.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/HSDataDataContext/animal" />
+      <nestedChildShapes>
+        <elementListCompartment Id="33685c4c-363c-4ce5-8d2d-ebcf29fd9028" absoluteBounds="0.765, 7.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d5272731-5b22-4317-8c83-8aeba14b24b5" absoluteBounds="3.75, 6.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/HSDataDataContext/current_pet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a699ed9a-3837-49be-bd89-1bcef44fbd98" absoluteBounds="3.765, 7.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a3c4ef4d-939b-43dc-b0fb-865a2c3dbbb5" absoluteBounds="6.75, 4.75, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/HSDataDataContext/lifestyle" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0d8287af-9032-4ddb-baf1-5f19a073be78" absoluteBounds="6.765, 5.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6a5cb3b4-a0c4-4ad9-93c2-f887ac783fa9" absoluteBounds="6.75, 7.75, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/HSDataDataContext/previous_pet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5196dcfb-9cb8-4c70-88f5-ff48e048b78c" absoluteBounds="6.765, 8.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2d2169c4-8a22-4df2-87d2-f2a42516f29f" absoluteBounds="0.75, 1.75, 2, 2.732403971354167">
+      <DataClassMoniker Name="/HSDataDataContext/veterinarian" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d50c53b9-a6b5-43f0-871e-81c03eecc398" absoluteBounds="0.765, 2.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 3.06814697265625); (6.25 : 3.06814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HSDataDataContext/adopter/adopter_visit" />
+      <nodes>
+        <classShapeMoniker Id="78f6929f-0dc0-462b-a4b0-a166431b66e3" />
+        <classShapeMoniker Id="e39a68cc-9acb-401b-804c-56f54664bed4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.11620198567708); (3.5 : 3.11620198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HSDataDataContext/veterinarian/veterinarian_adopter" />
+      <nodes>
+        <classShapeMoniker Id="2d2169c4-8a22-4df2-87d2-f2a42516f29f" />
+        <classShapeMoniker Id="78f6929f-0dc0-462b-a4b0-a166431b66e3" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -8,7 +8,7 @@ namespace HumaneSocietyApp
 {
     class NarrowAdoptionStatusSearch
     {
-        public void SearchByAdoptionStatus(List<string> listToNarrow)
+        public void SearchByAdoptionStatus(List<animal> listToNarrow)
         {
             Console.WriteLine("Are you looking for adopted animals or animals waiting for adoption? Please enter adopted or waiting.");
             string searchAdoptionStatus = Console.ReadLine();
@@ -30,17 +30,22 @@ namespace HumaneSocietyApp
                 SearchByAdoptionStatus(listToNarrow);
             }
             
-            var adoptionStatusQuery = from name in listToNarrow
-                                      where name.Contains(searchAdoptionStatus)
-                                      select name;
+            var adoptionStatusQuery = from status in listToNarrow
+                                      where status.is_adopted.Contains(searchAdoptionStatus)
+                                      select status;
 
             Array adoptionStatusArray = adoptionStatusQuery.ToArray();
 
             try
             {
+                if (adoptionStatusQuery.Count() < 1)
+                {
+                    Console.WriteLine("No results found.");
+                    Console.ReadLine();
+                }
                 foreach (var result in adoptionStatusQuery)
                 {
-                    Console.WriteLine($"Narrowed results: {result}");
+                    Console.WriteLine($"ID: {result.animal_id}, Name: {result.name}, age {result.age}");
                 }
             }
             catch (InvalidCastException)

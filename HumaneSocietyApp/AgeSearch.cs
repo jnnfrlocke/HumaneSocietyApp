@@ -13,7 +13,7 @@ namespace HumaneSocietyApp
             Console.WriteLine("What age would you like to search for?");
             string searchAge = Console.ReadLine();
 
-            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+            HSDataDataContext db = new HSDataDataContext();
 
             IQueryable<animal> ageQuery =
                 from animal in db.animals

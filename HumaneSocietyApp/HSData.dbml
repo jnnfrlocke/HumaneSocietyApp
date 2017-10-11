@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HumaneSociety" Class="HSDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=GUMBY;Initial Catalog=HumaneSociety;Integrated Security=True" SettingsObjectName="HumaneSocietyApp.Properties.Settings" SettingsPropertyName="HumaneSocietyConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.adopter" Member="adopters">
+    <Type Name="adopter">
+      <Column Name="adopter_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="street_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="street_name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="state" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="zip_code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="phone_num" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="species_desired" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="lifestyle_traits" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="residence_ownership_status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="allergies" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="previous_pets" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="current_pets" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="veterinarian" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="home_visit_possibility" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="adopter_visit" Member="visits" ThisKey="adopter_id" OtherKey="adopter" Type="visit" />
+      <Association Name="veterinarian_adopter" Member="veterinarian1" ThisKey="veterinarian" OtherKey="veterinarian_id" Type="veterinarian" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.visit" Member="visits">
+    <Type Name="visit">
+      <Column Name="visit_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="adopter" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="species_desired" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="adopter_visit" Member="adopter1" ThisKey="adopter" OtherKey="adopter_id" Type="adopter" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.animal" Member="animals">
+    <Type Name="animal">
+      <Column Name="animal_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="species" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="is_vaccinated" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="amount_of_food" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="room" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="is_adopted" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="adoption_fee" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="special_needs" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="age" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.current_pets" Member="current_pets">
+    <Type Name="current_pet">
+      <Column Name="current_pets_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="species" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="get_along" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.lifestyle" Member="lifestyles">
+    <Type Name="lifestyle">
+      <Column Name="lifestyle_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="adopter" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time_home" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="veterinarian_cost" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="training" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.previous_pets" Member="previous_pets">
+    <Type Name="previous_pet">
+      <Column Name="previous_pets_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="species" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="what_happened" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.veterinarian" Member="veterinarians">
+    <Type Name="veterinarian">
+      <Column Name="veterinarian_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="clinic" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="street_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="street_name" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="state" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="zip_code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="phone_num" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="veterinarian_adopter" Member="adopters" ThisKey="veterinarian_id" OtherKey="veterinarian" Type="adopter" />
+    </Type>
+  </Table>
+</Database>

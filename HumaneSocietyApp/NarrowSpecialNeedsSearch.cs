@@ -8,22 +8,27 @@ namespace HumaneSocietyApp
 {
     class NarrowSpecialNeedsSearch
     {
-        public void SearchBySpecialNeeds(List<string> listToNarrow)
+        public void SearchBySpecialNeeds(List<animal> listToNarrow)
         {
             Console.WriteLine("Are you looking for animals with special needs? Type yes or no.");
             string searchSpecialNeeds = Console.ReadLine();
 
             var specialNeedsQuery = from needs in listToNarrow
-                                    where needs.Contains(searchSpecialNeeds)
+                                    where needs.special_needs.Contains(searchSpecialNeeds)
                                     select needs;
 
             Array specialNeedsArray = specialNeedsQuery.ToArray();
 
             try
             {
+                if (specialNeedsQuery.Count() < 1)
+                {
+                    Console.WriteLine("No results found.");
+                    Console.ReadLine();
+                }
                 foreach (var result in specialNeedsQuery)
                 {
-                    Console.WriteLine($"Narrowed results: {result}");
+                    Console.WriteLine($"ID: {result.animal_id}, Name: {result.name}, age {result.age}");
                 }
             }
             catch (InvalidCastException)

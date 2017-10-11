@@ -11,10 +11,10 @@ namespace HumaneSocietyApp
         string addName;
         string speciesToAdd;
         string vaccinationAnswer;
-        double foodPerWeek;
+        string foodPerWeek;
         string locationToAdd;
         string adoptionStatus;
-        int adoptionFee;
+        string adoptionFee;
         string specialNeeds;
         string age;
 
@@ -43,7 +43,7 @@ namespace HumaneSocietyApp
                 age = age 
             };
 
-            HumaneSociety02DataContext addAnimal = new HumaneSociety02DataContext();
+            HSDataDataContext addAnimal = new HSDataDataContext();
 
             addAnimal.animals.InsertOnSubmit(animalToInsert);
             addAnimal.SubmitChanges();
@@ -70,10 +70,10 @@ namespace HumaneSocietyApp
             return vaccinationAnswer;
         }
 
-        private double GetFood()
+        private string GetFood()
         {
             Console.WriteLine("How much food does this animal eat per week, in cups?");
-            double foodPerWeek = double.Parse(Console.ReadLine());
+            string foodPerWeek = Console.ReadLine();
             return foodPerWeek;
         }
 
@@ -91,10 +91,10 @@ namespace HumaneSocietyApp
             return adoptionStatus;
         }
 
-        private int GetAdoptionFee()
+        private string GetAdoptionFee()
         {
             Console.WriteLine("What is this animal's adoption fee?");
-            int adoptionFee = int.Parse(Console.ReadLine());
+            string adoptionFee = Console.ReadLine();
             return adoptionFee;
         }
 
@@ -131,7 +131,7 @@ namespace HumaneSocietyApp
             Console.WriteLine("What is the species of this animal?");
             string newSpeciesValue = Console.ReadLine();
 
-            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+            HSDataDataContext db = new HSDataDataContext();
 
             IQueryable<animal> changeSpeciesQuery =
                 from animal in db.animals
@@ -163,7 +163,7 @@ namespace HumaneSocietyApp
             Console.WriteLine("What is the adoption status of this animal?");
             string newStatusValue = Console.ReadLine();
 
-            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+            HSDataDataContext db = new HSDataDataContext();
 
             IQueryable<animal> changeStatusQuery =
                 from animal in db.animals
@@ -179,7 +179,7 @@ namespace HumaneSocietyApp
 
         public void ProcessPayment()
         {
-            int newFee;
+            string newFee;
             Console.WriteLine("You need the animal's ID to process an adoption fee payment. If you need to search for the animal, type 'search'. To continue, press enter.");
             string needToSearch = Console.ReadLine();
 
@@ -197,8 +197,8 @@ namespace HumaneSocietyApp
 
             if (newFeeValue == "yes")
             {
-                newFee = 0;
-                HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+                newFee = "0";
+                HSDataDataContext db = new HSDataDataContext();
 
                 IQueryable<animal> changeFeeQuery =
                     from animal in db.animals

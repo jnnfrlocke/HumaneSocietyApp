@@ -31,7 +31,7 @@ namespace HumaneSocietyApp
             }
 
 
-            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+            HSDataDataContext db = new HSDataDataContext();
 
             IQueryable<animal> adoptionStatusQuery =
                 from animal in db.animals

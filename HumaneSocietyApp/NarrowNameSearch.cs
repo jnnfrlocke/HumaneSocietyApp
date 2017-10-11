@@ -8,22 +8,28 @@ namespace HumaneSocietyApp
 {
     class NarrowNameSearch
     {
-        public void SearchByName(List<string> listToNarrow)
+        public void SearchByName(List<animal> listToNarrow)
         {
             Console.WriteLine("Please enter the animal's name");
             string searchName = Console.ReadLine();
 
             var namesQuery = from name in listToNarrow
-                             where name.Contains(searchName)
+                             where name.name.Contains(searchName)
                              select name;
             
             Array namesArray = namesQuery.ToArray();
 
             try
             {
+
+                if (namesQuery.Count() < 1)
+                {
+                    Console.WriteLine("No results found.");
+                    Console.ReadLine();
+                }
                 foreach (var result in namesQuery)
                 {
-                    Console.WriteLine($"Narrowed results: {result}");
+                    Console.WriteLine($"ID: {result.animal_id}, Name: {result.name}, age {result.age}");
                 }
             }
             catch (InvalidCastException)

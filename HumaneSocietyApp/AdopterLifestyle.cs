@@ -26,7 +26,7 @@ namespace HumaneSocietyApp
                 veterinarian_cost = veterinarianCost
             };
 
-        HumaneSociety02DataContext addLifestyle = new HumaneSociety02DataContext();
+        HSDataDataContext addLifestyle = new HSDataDataContext();
 
             addLifestyle.lifestyles.InsertOnSubmit(newLifestyle);
             addLifestyle.SubmitChanges();

@@ -13,7 +13,7 @@ namespace HumaneSocietyApp
             Console.WriteLine("Are you looking for animals with special needs? Type yes or no.");
             string searchSpecialNeeds = Console.ReadLine();
 
-            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+            HSDataDataContext db = new HSDataDataContext();
 
             IQueryable<animal> specialNeedsQuery =
                 from animal in db.animals

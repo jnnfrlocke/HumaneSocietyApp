@@ -60,7 +60,7 @@ namespace HumaneSocietyApp
                 home_visit_possibility = getHomeVisitPossibility,
             };
 
-            HumaneSociety02DataContext addAdopter = new HumaneSociety02DataContext();
+            HSDataDataContext addAdopter = new HSDataDataContext();
 
             addAdopter.adopters.InsertOnSubmit(adopterToInsert);
             addAdopter.SubmitChanges();

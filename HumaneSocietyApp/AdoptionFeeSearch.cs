@@ -11,9 +11,9 @@ namespace HumaneSocietyApp
         public void SearchByAdoptionFee()
         {
             Console.WriteLine("What adoption fee are you looking for?");
-            float searchAdoptionFee = float.Parse(Console.ReadLine());
+            string searchAdoptionFee = Console.ReadLine();
 
-            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+            HSDataDataContext db = new HSDataDataContext();
 
             IQueryable<animal> adoptionFeeQuery =
                 from animal in db.animals

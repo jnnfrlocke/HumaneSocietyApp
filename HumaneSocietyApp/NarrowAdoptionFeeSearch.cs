@@ -8,29 +8,27 @@ namespace HumaneSocietyApp
 {
     class NarrowAdoptionFeeSearch
     {
-        public void SearchByAdoptionFee(List<string> arrayToNarrow)
+        public void SearchByAdoptionFee(List<animal> arrayToNarrow)
         {
             Console.WriteLine("What adoption fee are you looking for?");
             string searchAdoptionFee = Console.ReadLine();
             
             var adoptionFeeQuery = from fee in arrayToNarrow
-                                   where fee.Contains(searchAdoptionFee)
+                                   where fee.adoption_fee.Contains(searchAdoptionFee)
                                    select fee;
-
-
-
-            //var adoptionFeeQuery =
-            //    from animal in arrayToNarrow
-            //    where animal.adoption_fee == searchAdoptionFee
-            //    select animal;
-
-            string[] adoptionFeeSearchArray = adoptionFeeQuery.ToArray();
+            
+            animal[] adoptionFeeSearchArray = adoptionFeeQuery.ToArray();
 
             try
             {
+                if (adoptionFeeQuery.Count() < 1)
+                {
+                    Console.WriteLine("No results found.");
+                    Console.ReadLine();
+                }
                 foreach (var result in adoptionFeeQuery)
                 {
-                    Console.WriteLine($"Narrowed results: {result}");
+                    Console.WriteLine($"ID: {result.animal_id}, Name: {result.name}, age {result.age}");
                 }
             }
             catch (InvalidCastException)

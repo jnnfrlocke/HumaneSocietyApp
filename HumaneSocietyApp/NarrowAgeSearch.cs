@@ -8,22 +8,27 @@ namespace HumaneSocietyApp
 {
     class NarrowAgeSearch
     {
-        public void SearchByAge(List<string> listToNarrow)
+        public void SearchByAge(List<animal> listToNarrow)
         {
             Console.WriteLine("What age would you like to search for?");
             string searchAge = Console.ReadLine();
 
             var ageQuery = from age in listToNarrow
-                           where age.Contains(searchAge)
+                           where age.age.Contains(searchAge)
                            select age;
 
             Array ageArray = ageQuery.ToArray();
 
             try
             {
+                if (ageQuery.Count() < 1)
+                {
+                    Console.WriteLine("No results found.");
+                    Console.ReadLine();
+                }
                 foreach (var result in ageQuery)
                 {
-                    Console.WriteLine($"Narrowed results: {result}");
+                    Console.WriteLine($"ID: {result.animal_id}, Name: {result.name}, age {result.age}");
                 }
             }
             catch (InvalidCastException)

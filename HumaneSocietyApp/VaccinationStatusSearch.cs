@@ -13,7 +13,7 @@ namespace HumaneSocietyApp
             Console.WriteLine("Are you looking for a pet that is already vaccinated? Type yes or no.");
             string searchVaccinationStatus = Console.ReadLine().ToLower();
 
-            HumaneSociety02DataContext db = new HumaneSociety02DataContext();
+            HSDataDataContext db = new HSDataDataContext();
 
             IQueryable<animal> vaccinationStatusQuery =
                 from animal in db.animals

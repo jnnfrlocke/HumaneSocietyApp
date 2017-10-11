@@ -8,14 +8,28 @@ namespace HumaneSocietyApp
 {
     class NarrowSearch
     {
-        private object converter;
+        //private object converter;
+
+        //static string ConvertStringArrayToString(Array array)
+        //{
+            // Concatenate all the elements into a StringBuilder.
+        //    StringBuilder builder = new StringBuilder();
+        //    foreach (string value in array)
+        //    {
+        //        builder.Append(value);
+        //        builder.Append(',');
+        //    }
+        //    return builder.ToString();
+        //}
 
         public void narrowOption(Array arrayToBeginNarrow)
         {
 
-            List<string> listToNarrow = new List<string>();
+
+
+            List<animal> listToNarrow = new List<animal>();
             
-            foreach (string listItem in arrayToBeginNarrow)
+            foreach (animal listItem in arrayToBeginNarrow)
             {
                 listToNarrow.Add(listItem);
             }
@@ -30,7 +44,7 @@ namespace HumaneSocietyApp
             }
             else
             {
-                Console.WriteLine("Would you like to perform an action on an animal's record , exit the application or start over? Type 1 to edit an animal's record, 2 to exit, or 3 to start over.");
+                Console.WriteLine("Would you like to perform an action on an animal's record, exit the application, or start over? Type 1 to edit an animal's record, 2 to exit, or 3 to start over.");
                 string endOrRestart = Console.ReadLine().ToLower();
 
                 if (endOrRestart == "1")

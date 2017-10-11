@@ -8,13 +8,13 @@ namespace HumaneSocietyApp
 {
     class NarrowVaccinationStatusSearch
     {
-        public void SearchByVaccinationStatus(List<string> listToNarrow)
+        public void SearchByVaccinationStatus(List<animal> listToNarrow)
         {
             Console.WriteLine("Are you looking for a pet that is already vaccinated? Type yes or no.");
             string searchVaccinationStatus = Console.ReadLine().ToLower();
 
             var vaccinationStatusQuery = from status in listToNarrow
-                                         where status.Contains(searchVaccinationStatus)
+                                         where status.is_vaccinated.Contains(searchVaccinationStatus)
                                          select status;
 
             Array namesArray = vaccinationStatusQuery.ToArray();
@@ -27,9 +27,14 @@ namespace HumaneSocietyApp
 
             try
             {
+                if (vaccinationStatusQuery.Count() < 1)
+                {
+                    Console.WriteLine("No results found.");
+                    Console.ReadLine();
+                }
                 foreach (var result in vaccinationStatusQuery)
                 {
-                    Console.WriteLine($"Narrowed results: {result}");
+                    Console.WriteLine($"ID: {result.animal_id}, Name: {result.name}, age {result.age}");
                 }
             }
             catch (InvalidCastException)
