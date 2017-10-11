@@ -17,7 +17,7 @@ namespace HumaneSocietyApp
         string getPhoneNum;
         string getEmail;
         string getSpeciesDesired;
-        //int lifestyleTraits;
+        string lifestyleTraits;
         string getResidenceOwnership;
         string getAllergies;
         string getPreviousPets;
@@ -42,7 +42,7 @@ namespace HumaneSocietyApp
             getCurrentPets = GetCurrentPets(); //create new classes to deal with tables?
             getVeterinarian = GetVeterinarian();// How to do with 2 tables??
             getHomeVisitPossibility = GetHomeVisitPossibility();
-            //GetLifestyleTraits();
+            GetLifestyleTraits();
 
             adopter adopterToInsert = new adopter
             {
@@ -137,10 +137,12 @@ namespace HumaneSocietyApp
             return Console.ReadLine().ToLower();
         }
 
-        private void GetLifestyleTraits()
+        private string GetLifestyleTraits()
         {
-            AdopterLifestyle newLifestyle = new AdopterLifestyle();
-            newLifestyle.GetLifestyle();
+            //AdopterLifestyle newLifestyle = new AdopterLifestyle();
+            //newLifestyle.GetLifestyle();
+            Console.WriteLine("Are you willing to discuss the factors in your lifestyle that may affect your ability to care for a pet?");
+            return Console.ReadLine().ToLower();
         }
 
         private string GetResidenceOwnership()
