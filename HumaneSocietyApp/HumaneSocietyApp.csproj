@@ -59,7 +59,6 @@
     <Compile Include="AdoptionStatusSearch.cs" />
     <Compile Include="AgeSearch.cs" />
     <Compile Include="Animal.cs" />
-    <Compile Include="CodeClips.cs" />
     <Compile Include="ContinueSearch.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="HSData.designer.cs">

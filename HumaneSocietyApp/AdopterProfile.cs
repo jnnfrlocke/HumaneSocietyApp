@@ -208,17 +208,7 @@ namespace HumaneSocietyApp
             return Console.ReadLine();
         }
 
-
-
-
-
-        //private string LifestyleInfo()
-        //{
-        //    AdopterLifestyle newLifestyle = new AdopterLifestyle();
-        //    newLifestyle.GetLifestyle();
-        //}
-
-        private void GetVeterinarianInfo()//move to veterinarian class
+        private void GetVeterinarianInfo()//move to veterinarian class?
         {
 
         }

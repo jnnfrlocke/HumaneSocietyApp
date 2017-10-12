@@ -1,20 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Sql;
 using System.IO;
-using System.Data.Linq;
-using Microsoft.VisualBasic;
 
 namespace HumaneSocietyApp
 {
-    //partial class HumaneSocietyDataContext
-    //{
-    //}
-
     public class HumaneSociety
     {
         public void Run()
@@ -44,43 +34,31 @@ namespace HumaneSocietyApp
             }
         }
 
-        public void ImportCSV() //convert this to LINQ
+        public void ImportCSV() 
         {
-            string connectionString = "Server=GUMBY;Database=HumaneSociety;Integrated Security=true";
+            string filePath = "C:/Users/jnnfr/Documents/Visual Studio 2015/Projects/HumaneSociety/HumaneSocietyApp/animals.csv";
 
-            using (SqlConnection OpeningConnection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand importAnimalCSV = OpeningConnection.CreateCommand())
-                {
-                    importAnimalCSV.CommandText = "bulk insert animal from 'C:/Users/jnnfr/Documents/Visual Studio 2015/Projects/HumaneSociety/HumaneSocietyApp/animals.csv' with (firstrow = 2, fieldterminator = ',', rowterminator = '\n', tablock)";
+            var animalList = File.ReadLines(filePath).Select(file => file.Split(',')).ToList();
 
-                    OpeningConnection.Open();
-                    importAnimalCSV.ExecuteNonQuery();
-                    OpeningConnection.Close();
+            foreach (var item in animalList) {
 
-                }
+                animal importAnimalCsv = new animal();
+                
+                importAnimalCsv.name = item[0]; 
+                importAnimalCsv.species = item[1];
+                importAnimalCsv.is_vaccinated = item[2];
+                importAnimalCsv.amount_of_food = item[3];
+                importAnimalCsv.room = item[4];
+                importAnimalCsv.is_adopted = item[5];
+                importAnimalCsv.adoption_fee = item[6];
+                importAnimalCsv.special_needs = item[7];
+                importAnimalCsv.age = item[8];
 
-                //HumaneSociety02DataContext importAnimalCSV = new HumaneSociety02DataContext();
+                HSDataDataContext db = new HSDataDataContext();
 
-                //importAnimalCSV.animals.InsertAllOnSubmit (string "bulk insert animal from 'C:/Users/jnnfr/Documents/Visual Studio 2015/Projects/HumaneSociety/HumaneSocietyApp/animals.csv' with (firstrow = 2, fieldterminator = ',', rowterminator = '\n', tablock)", );
-
+                db.animals.InsertOnSubmit(importAnimalCsv);
+                db.SubmitChanges();
             }
-
-             //var importCSV = new
         }
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

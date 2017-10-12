@@ -234,6 +234,18 @@ namespace HumaneSocietyApp
                     animal.adoption_fee = newFee;
                     db.SubmitChanges();
                 }
+
+                Console.WriteLine("The adoption fee has been paid to zero. Enter 1 to exit the application or any other key to start over.");
+                string startOver = Console.ReadLine();
+                if (startOver == "1")
+                {
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    HumaneSociety startAgain = new HumaneSociety();
+                    startAgain.Run();
+                }
             }
             else if (newFeeValue == "no")
             {
@@ -242,7 +254,40 @@ namespace HumaneSocietyApp
 
                 if (supervisorApproval == 1)
                 {
-                    //do supervisor thing
+                    Console.WriteLine("Enter supervisor code:");
+                    string supervisorCode = Console.ReadLine();
+                    if (supervisorCode == "rk3tr")
+                    {
+                        newFee = "0";
+                        HSDataDataContext db = new HSDataDataContext();
+
+                        IQueryable<animal> changeFeeQuery =
+                            from animal in db.animals
+                            where animal.animal_id == searchID
+                            select animal;
+
+                        foreach (animal animal in changeFeeQuery)
+                        {
+                            animal.adoption_fee = newFee;
+                            db.SubmitChanges();
+                        }
+
+                        Console.WriteLine("The adoption fee has been paid to zero. Enter 1 to exit the application or any other key to start over.");
+                        string startOver = Console.ReadLine();
+                        if (startOver == "1")
+                        {
+                            Environment.Exit(0);
+                        }
+                        else
+                        {
+                            HumaneSociety startAgain = new HumaneSociety();
+                            startAgain.Run();
+                        }
+                    }
+                    else
+                    {
+                        ProcessPayment();
+                    }
                 }
                 else if (supervisorApproval == 2)
                 {
@@ -259,42 +304,6 @@ namespace HumaneSocietyApp
                 Console.WriteLine("You entered an invalid option.");
                 ProcessPayment();
             }
-
-            
         }
-
-
-
-
-
-        //public void Location()
-        //{
-
-        //}
-
-        //public void CheckVaccinationStatus()
-        //{
-
-        //}
-
-        //public void Food()
-        //{
-
-        //}
-        
-        //public void ShowAnimal() TODO: string concatenation
-        //{
-        //    Console.WriteLine("Name: " + animal.name);
-        //    Console.WriteLine("Species: " + animal.species);
-        //    Console.WriteLine("Vaccinated: " + animal.is_vaccinated);
-        //    Console.WriteLine("Amount of Food: " + animal.amount_of_food);
-        //    Console.WriteLine("Location: " + animal.room);
-        //    Console.WriteLine("Adopted: " + animal.is_adopted);
-        //    Console.WriteLine("Adoption Fee: " + animal.adoption_fee);
-        //    Console.WriteLine("Special Needs: " + animal.special_needs);
-        //    Console.WriteLine("Age: " + animal.age);
-        //}
-
-
     }
 }
