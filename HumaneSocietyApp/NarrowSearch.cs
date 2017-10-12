@@ -10,7 +10,6 @@ namespace HumaneSocietyApp
     {
         public void narrowOption(Array arrayToBeginNarrow)
         {
-            
             List<animal> listToNarrow = new List<animal>();
             
             foreach (animal listItem in arrayToBeginNarrow)

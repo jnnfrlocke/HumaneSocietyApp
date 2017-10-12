@@ -21,7 +21,6 @@ namespace HumaneSocietyApp
 
             try
             {
-
                 if (namesQuery.Count() < 1)
                     Console.WriteLine("No results found.\nWould you like to modify an animal's record, exit the application, or start over? Type 1 to modify, 2 to exit, or 3 to start over.");
                 string namesSearch = Console.ReadLine();

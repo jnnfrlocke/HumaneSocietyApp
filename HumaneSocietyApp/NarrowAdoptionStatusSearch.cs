@@ -8,12 +8,12 @@ namespace HumaneSocietyApp
 {
     class NarrowAdoptionStatusSearch
     {
+        string adopted;
+
         public void SearchByAdoptionStatus(List<animal> listToNarrow)
         {
             Console.WriteLine("Are you looking for adopted animals or animals waiting for adoption? Please enter adopted or waiting.");
             string searchAdoptionStatus = Console.ReadLine();
-
-            string adopted;
 
             if (searchAdoptionStatus == "adopted")
             {
@@ -26,7 +26,6 @@ namespace HumaneSocietyApp
             else
             {
                 Console.WriteLine("You entered an invalid option");
-                adopted = null;
                 SearchByAdoptionStatus(listToNarrow);
             }
             

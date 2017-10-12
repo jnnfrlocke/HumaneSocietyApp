@@ -167,10 +167,9 @@ namespace HumaneSocietyApp
                 animal.species = newSpeciesValue;
                 db.SubmitChanges();
             }
-
         }
 
-        public void ChangeStatus() // previously had 'string task' being passed in
+        public void ChangeStatus()
         {
             Console.WriteLine("You need the animal's ID to update its adoption status. If you need to search for the animal, type 'search'. To continue, press enter.");
             string needToSearch = Console.ReadLine();

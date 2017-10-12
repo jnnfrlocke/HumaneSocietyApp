@@ -45,10 +45,7 @@ namespace HumaneSocietyApp
                     foreach (var result in ageQuery)
                     {
                         Console.WriteLine($"Located {searchAge}, ID:{result.animal_id}, {result.name}, aged {result.age}");
-
-                        
                     }
-                
             }
             catch (InvalidCastException)
             {
@@ -57,7 +54,6 @@ namespace HumaneSocietyApp
             }
             AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
             narrowSearchDown.adopterNarrowOption(ageList);
-
         }
     }
 }

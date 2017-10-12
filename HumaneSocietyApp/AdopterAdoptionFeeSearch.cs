@@ -45,7 +45,6 @@ namespace HumaneSocietyApp
                     foreach (var result in adoptionFeeQuery)
                     {
                         Console.WriteLine($"Located {searchAdoptionFee}, ID:{result.animal_id}, {result.name}, aged {result.age}");
-
                     }
                 
             }
@@ -56,7 +55,6 @@ namespace HumaneSocietyApp
             }
             AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
             narrowSearchDown.adopterNarrowOption(adopterAdoptionFeeList);
-
         }
     }
 }

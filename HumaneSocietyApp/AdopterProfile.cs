@@ -42,7 +42,7 @@ namespace HumaneSocietyApp
             getCurrentPets = GetCurrentPets(); //create new classes to deal with tables?
             getVeterinarian = GetVeterinarian();// How to do with 2 tables??
             getHomeVisitPossibility = GetHomeVisitPossibility();
-            GetLifestyleTraits();
+            lifestyleTraits = GetLifestyleTraits();
 
             adopter adopterToInsert = new adopter
             {
@@ -208,11 +208,10 @@ namespace HumaneSocietyApp
             return Console.ReadLine();
         }
 
-        private void GetVeterinarianInfo()//move to veterinarian class?
+        private void GetVeterinarianInfo()
         {
 
         }
-
     }
 
 }

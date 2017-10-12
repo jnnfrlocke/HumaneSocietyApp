@@ -26,7 +26,6 @@ namespace HumaneSocietyApp
             {
                 Console.WriteLine("You entered an invalid option.");
                 SearchByVaccinationStatus();
-
             }
 
             try

@@ -52,7 +52,6 @@ namespace HumaneSocietyApp
                                 break;
                         }
                     }
-
                     else if (adoptionFeeSearch == "2")
                     {
                         Environment.Exit(0);

@@ -29,8 +29,7 @@ namespace HumaneSocietyApp
                 adopted = null;
                 SearchByAdoptionStatus();
             }
-
-
+            
             HSDataDataContext db = new HSDataDataContext();
 
             IQueryable<animal> adoptionStatusQuery =

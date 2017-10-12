@@ -10,8 +10,6 @@ namespace HumaneSocietyApp
     {
         public void adopterNarrowOption(List<animal> listToNarrow)
         {
-            //List<animal> listToNarrow = new List<animal>();
-
             Console.WriteLine("Would you like to narrow your search further? Type yes or no.");
             string continueSearching = Console.ReadLine().ToLower();
 

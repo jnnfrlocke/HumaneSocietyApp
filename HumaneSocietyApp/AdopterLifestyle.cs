@@ -14,7 +14,6 @@ namespace HumaneSocietyApp
 
         public void GetLifestyle()
         {
-
             timeHome = GetTimeHome();
             trained = GetTraining();
             veterinarianCost = GetVeterinarianCost();

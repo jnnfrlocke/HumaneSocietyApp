@@ -55,8 +55,6 @@ namespace HumaneSocietyApp
                 Console.WriteLine("Excpetion in Query...");
                 SearchBySpecialNeeds(listToNarrow);
             }
-
         }
-
     }
-    }
+}

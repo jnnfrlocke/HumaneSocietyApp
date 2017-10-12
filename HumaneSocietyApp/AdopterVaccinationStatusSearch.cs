@@ -45,8 +45,6 @@ namespace HumaneSocietyApp
                     foreach (var result in vaccinationStatusQuery)
                     {
                         Console.WriteLine($"Located {searchVaccinationStatus}, ID:{result.animal_id}, {result.name}, aged {result.age}");
-
-                        
                     }
                 
             }
@@ -58,7 +56,6 @@ namespace HumaneSocietyApp
 
             AdopterNarrowSearch narrowSearchDown = new AdopterNarrowSearch();
             narrowSearchDown.adopterNarrowOption(adopterVaccinationStatusList);
-
         }
     }
 }
